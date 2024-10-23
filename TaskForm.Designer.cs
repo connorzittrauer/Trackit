@@ -32,22 +32,22 @@ namespace Trackit
         /// </summary>
         private void InitializeComponent()
         {
-            createTaskButton = new Button();
+            btnAddTask = new Button();
             taskListView = new ListView();
             taskName = new ColumnHeader();
             taskDescription = new ColumnHeader();
             taskDueDate = new ColumnHeader();
             SuspendLayout();
             // 
-            // createTaskButton
+            // btnAddTask
             // 
-            createTaskButton.Location = new Point(314, 397);
-            createTaskButton.Name = "createTaskButton";
-            createTaskButton.Size = new Size(133, 46);
-            createTaskButton.TabIndex = 0;
-            createTaskButton.Text = "Create New Task";
-            createTaskButton.UseVisualStyleBackColor = true;
-            createTaskButton.Click += createTaskButton_Click;
+            btnAddTask.Location = new Point(314, 397);
+            btnAddTask.Name = "btnAddTask";
+            btnAddTask.Size = new Size(133, 46);
+            btnAddTask.TabIndex = 0;
+            btnAddTask.Text = "Create New Task";
+            btnAddTask.UseVisualStyleBackColor = true;
+            btnAddTask.Click += btnAddTask_Click;
             // 
             // taskListView
             // 
@@ -72,21 +72,21 @@ namespace Trackit
             // 
             taskDueDate.Text = "Due Date";
             // 
-            // TaskPage
+            // TaskForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(767, 538);
             Controls.Add(taskListView);
-            Controls.Add(createTaskButton);
-            Name = "TaskPage";
+            Controls.Add(btnAddTask);
+            Name = "TaskForm";
             Text = "Task Page";
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button createTaskButton;
+        private Button btnAddTask;
         private ListView taskListView;
         private ColumnHeader taskName;
         private ColumnHeader taskDescription;
