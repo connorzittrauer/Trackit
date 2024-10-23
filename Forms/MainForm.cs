@@ -3,9 +3,9 @@ using Trackit.Models;
 
 namespace Trackit
 {
-    public partial class TaskForm : Form
+    public partial class MainForm : Form
     {
-        public TaskForm()
+        public MainForm()
         {
             InitializeComponent();
             Debug.WriteLine("Does this print.");

@@ -17,8 +17,8 @@ namespace Trackit
             ApplicationConfiguration.Initialize();
             
             
-            //Application.Run(new TaskForm());
-            Application.Run(new TaskDialog());
+            Application.Run(new MainForm());
+            Application.Run(new TaskDialogForm());
            
 
         }

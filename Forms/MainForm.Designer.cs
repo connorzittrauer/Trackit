@@ -2,7 +2,7 @@
 
 namespace Trackit
 {
-    partial class TaskForm
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.

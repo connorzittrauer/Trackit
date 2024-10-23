@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Trackit
 {
-    public partial class TaskDialog : Form
+    public partial class TaskDialogForm : Form
     {
-        public TaskDialog()
+        public TaskDialogForm()
         {
             InitializeComponent();
             formatDateTimePicker();
