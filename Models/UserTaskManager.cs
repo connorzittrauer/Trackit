@@ -17,6 +17,8 @@ namespace Trackit.Models
 
             // Subscribes to the the TaskCreated event in the Task Class 
             UserTask.TaskCreated += AddTask;
+
+            // Slight change is made 
         }
 
         public void AddTask(UserTask task)
