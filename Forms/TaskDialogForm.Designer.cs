@@ -1,4 +1,5 @@
-﻿namespace Trackit
+﻿
+namespace Trackit
 {
     partial class TaskDialogForm
     {
@@ -31,9 +32,10 @@
             textBoxTaskName = new TextBox();
             lblTaskName = new Label();
             lblTaskDescription = new Label();
-            richTextBox1 = new RichTextBox();
+            textBoxTaskDescription = new RichTextBox();
             lblDueDate = new Label();
             dateTimePickerDueDate = new DateTimePicker();
+            btnAddTask = new Button();
             SuspendLayout();
             // 
             // textBoxTaskName
@@ -61,13 +63,13 @@
             lblTaskDescription.TabIndex = 3;
             lblTaskDescription.Text = "Task Description";
             // 
-            // richTextBox1
+            // textBoxTaskDescription
             // 
-            richTextBox1.Location = new Point(121, 81);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(185, 79);
-            richTextBox1.TabIndex = 4;
-            richTextBox1.Text = "";
+            textBoxTaskDescription.Location = new Point(121, 81);
+            textBoxTaskDescription.Name = "textBoxTaskDescription";
+            textBoxTaskDescription.Size = new Size(185, 79);
+            textBoxTaskDescription.TabIndex = 4;
+            textBoxTaskDescription.Text = "";
             // 
             // lblDueDate
             // 
@@ -86,18 +88,29 @@
             dateTimePickerDueDate.Size = new Size(200, 23);
             dateTimePickerDueDate.TabIndex = 6;
             // 
-            // TaskDialog
+            // btnAddTask
+            // 
+            btnAddTask.Location = new Point(170, 218);
+            btnAddTask.Name = "btnAddTask";
+            btnAddTask.Size = new Size(75, 23);
+            btnAddTask.TabIndex = 7;
+            btnAddTask.Text = "Add";
+            btnAddTask.UseVisualStyleBackColor = true;
+            btnAddTask.Click += btnAddTask_Click;
+            // 
+            // TaskDialogForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(377, 253);
+            Controls.Add(btnAddTask);
             Controls.Add(dateTimePickerDueDate);
             Controls.Add(lblDueDate);
-            Controls.Add(richTextBox1);
+            Controls.Add(textBoxTaskDescription);
             Controls.Add(lblTaskDescription);
             Controls.Add(lblTaskName);
             Controls.Add(textBoxTaskName);
-            Name = "TaskDialog";
+            Name = "TaskDialogForm";
             Text = "TaskDialog";
             ResumeLayout(false);
             PerformLayout();
@@ -108,8 +121,9 @@
         private TextBox textBoxTaskName;
         private Label lblTaskName;
         private Label lblTaskDescription;
-        private RichTextBox richTextBox1;
+        private RichTextBox textBoxTaskDescription;
         private Label lblDueDate;
         private DateTimePicker dateTimePickerDueDate;
+        private Button btnAddTask;
     }
 }

@@ -7,19 +7,22 @@ namespace Trackit.Models
     {
         // Static event to notify subscribers when a task is created
         public static event Action<UserTask> TaskCreated;
-        public int TaskID { get; set; }
+        private static int taskCounter = 0;
+        public int TaskID { get; private set; }
         public string TaskName { get; set; }
         public string TaskDescription { get; set; }
         public DateTime? DueDate { get; set; }
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         public DateTime? DateCompleted { get; set; }
         public bool IsCompleted { get; set; }
-        public UserTask(int TaskID, string TaskName, string TaskDescription, DateTime? CreatedDate, DateTime? CompletedDate, DateTime? DueDate, bool IsCompleted)
+
+
+        public UserTask(string TaskName, string TaskDescription, DateTime? CompletedDate, DateTime? DueDate, bool IsCompleted)
         {
-            this.TaskID = TaskID;
+            this.TaskID = ++taskCounter; // Generate a unique ID for each task
             this.TaskName = TaskName; 
-            this.TaskDescription = TaskDescription; 
-            this.DateCreated = CreatedDate; 
+            this.TaskDescription = TaskDescription;
+            this.DateCreated = DateTime.Now; // Generate creation date on instantiation
             this.DateCompleted = CompletedDate; 
             this.DueDate = DueDate;
             this.IsCompleted = IsCompleted;
@@ -29,7 +32,6 @@ namespace Trackit.Models
 
         }
 
-        
         public override string ToString()
         {
             // The ?? operator checks if the left-hand side is null. 

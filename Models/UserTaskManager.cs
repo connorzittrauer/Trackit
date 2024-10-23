@@ -18,7 +18,7 @@ namespace Trackit.Models
             // Subscribes to the the TaskCreated event in the Task Class 
             UserTask.TaskCreated += AddTask;
 
-            // Slight change is made 
+       
         }
 
         public void AddTask(UserTask task)
@@ -26,14 +26,24 @@ namespace Trackit.Models
             TaskList.Add(task);
 
             //Output to debug console to ensure task is created
-            Debug.WriteLine($"Task '{task.TaskName}' added to the Task Manager.");
+           
+            //Debug.WriteLine($"Task '{task.TaskName}' added to the Task Manager.");
         }
 
         public void RemoveTask(UserTask task)
         {
             TaskList.Remove(task);
-            Debug.WriteLine($"Task '{task.TaskName}' removed from the Task Manager.");
+           
+            //Debug.WriteLine($"Task '{task.TaskName}' removed from the Task Manager.");
         }
 
+        // Helper method for printing task list
+        public void PrintTasks()
+        {
+            foreach (var task in TaskList)
+            {
+                Debug.WriteLine(task);
+            }
+        }
     }
 }
