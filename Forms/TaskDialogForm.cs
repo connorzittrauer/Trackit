@@ -14,10 +14,13 @@ namespace Trackit
 {
     public partial class TaskDialogForm : Form
     {
-        public TaskDialogForm()
+        List<UserTask> taskList = UserTaskManager.Instance.TaskList;
+        MainForm mainForm;
+
+        public TaskDialogForm(MainForm mainForm)
         {
             InitializeComponent();
-
+            this.mainForm = mainForm;
             // Set the custom format to display date and time 
             dateTimePickerDueDate.CustomFormat = "MM/dd/yyyy hh:mm tt";
         }
@@ -48,9 +51,13 @@ namespace Trackit
             // Clear out fields 
             ClearFormFields();
 
+            mainForm.PopulateListView();
+
             MessageBox.Show($"Successfully added task: {taskName}");
 
+            
         }
+
 
         // Helper method to clear form fields
         private void ClearFormFields()

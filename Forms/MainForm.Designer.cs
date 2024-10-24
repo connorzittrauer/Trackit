@@ -63,16 +63,17 @@ namespace Trackit
             // taskName
             // 
             taskName.Text = "Task";
+            taskName.Width = 100;
             // 
             // taskDescription
             // 
             taskDescription.Text = "Description";
-            taskDescription.Width = 100;
+            taskDescription.Width = 150;
             // 
             // taskDueDate
             // 
             taskDueDate.Text = "Due Date";
-            taskDueDate.Width = 100;
+            taskDueDate.Width = 150;
             // 
             // MainForm
             // 
