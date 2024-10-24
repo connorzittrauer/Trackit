@@ -9,6 +9,8 @@ namespace Trackit
         public MainForm()
         {
             InitializeComponent();
+
+            // Added a git comment
         }
 
         private void btnAddTask_Click(object sender, EventArgs e)
