@@ -24,7 +24,7 @@ namespace Trackit
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            UserTaskManager taskManager = new UserTaskManager();
+            UserTaskManager taskManager = UserTaskManager.Instance;
 
             string taskName = textBoxTaskName.Text;
             string taskDescription = textBoxTaskDescription.Text;
@@ -45,14 +45,10 @@ namespace Trackit
                 IsCompleted: false
              );
 
-            //taskManager.AddTask(newTask);
-
             // Clear out fields 
             ClearFormFields();
 
             MessageBox.Show($"Successfully added task: {taskName}");
-
-            taskManager.PrintTasks();
 
         }
 
@@ -64,7 +60,7 @@ namespace Trackit
             dateTimePickerDueDate.Value = DateTime.Now; // Reset to current date
         }
 
-        // Validates user input and prompts if task is empty 
+        // Validates user input and alerts if field is empty 
         private bool ValidateInput(string taskName, string taskDescription)
         {
 

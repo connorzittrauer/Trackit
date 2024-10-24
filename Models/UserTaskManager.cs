@@ -9,37 +9,45 @@ namespace Trackit.Models
 {
     public class UserTaskManager
     {
-        public List<UserTask> TaskList { get; private set; }
+        // Static field to hold the single instance of UserTaskManager
+        private static UserTaskManager _instance;
 
-        public UserTaskManager() 
-        { 
-            TaskList = new List<UserTask>();
-
-            // Subscribes to the the TaskCreated event in the Task Class 
-            UserTask.TaskCreated += AddTask;
-
-       
+        // Public property to provide global access to the instance
+        public static UserTaskManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new UserTaskManager();
+                }
+                return _instance;
+            }
         }
 
+        // List to hold tasks
+        public List<UserTask> TaskList { get; private set; }
+
+        // Private constructor prevents instantiation from outside the class
+        private UserTaskManager()
+        {
+            TaskList = new List<UserTask>();
+
+            // Subscribes to the TaskCreated event in the UserTask class
+            UserTask.TaskCreated += AddTask;
+        }
+
+        // Method to add a task to the list
         public void AddTask(UserTask task)
         {
             TaskList.Add(task);
-
-            //Output to debug console to ensure task is created
-           
-            //Debug.WriteLine($"Task '{task.TaskName}' added to the Task Manager.");
-        }
-
-        public void RemoveTask(UserTask task)
-        {
-            TaskList.Remove(task);
-           
-            //Debug.WriteLine($"Task '{task.TaskName}' removed from the Task Manager.");
+            Debug.WriteLine(task.ToString());
         }
 
         // Helper method for printing task list
         public void PrintTasks()
         {
+            Debug.WriteLine("Entire Task List: ");
             foreach (var task in TaskList)
             {
                 Debug.WriteLine(task);

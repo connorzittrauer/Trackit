@@ -52,9 +52,9 @@ namespace Trackit
             // taskListView
             // 
             taskListView.Columns.AddRange(new ColumnHeader[] { taskName, taskDescription, taskDueDate });
-            taskListView.Location = new Point(161, 125);
+            taskListView.Location = new Point(129, 125);
             taskListView.Name = "taskListView";
-            taskListView.Size = new Size(374, 97);
+            taskListView.Size = new Size(529, 97);
             taskListView.TabIndex = 1;
             taskListView.UseCompatibleStateImageBehavior = false;
             taskListView.View = View.Details;
@@ -67,19 +67,21 @@ namespace Trackit
             // taskDescription
             // 
             taskDescription.Text = "Description";
+            taskDescription.Width = 100;
             // 
             // taskDueDate
             // 
             taskDueDate.Text = "Due Date";
+            taskDueDate.Width = 100;
             // 
-            // TaskForm
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(767, 538);
             Controls.Add(taskListView);
             Controls.Add(btnAddTask);
-            Name = "TaskForm";
+            Name = "MainForm";
             Text = "Task Page";
             ResumeLayout(false);
         }
