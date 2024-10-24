@@ -33,10 +33,7 @@ namespace Trackit
         private void InitializeComponent()
         {
             btnAddTask = new Button();
-            taskListView = new ListView();
-            taskName = new ColumnHeader();
-            taskDescription = new ColumnHeader();
-            taskDueDate = new ColumnHeader();
+            flowLayoutPanelTasks = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // btnAddTask
@@ -45,42 +42,25 @@ namespace Trackit
             btnAddTask.Name = "btnAddTask";
             btnAddTask.Size = new Size(133, 46);
             btnAddTask.TabIndex = 0;
-            btnAddTask.Text = "Create New Task";
+            btnAddTask.Text = "Add Task";
             btnAddTask.UseVisualStyleBackColor = true;
             btnAddTask.Click += btnAddTask_Click;
             // 
-            // taskListView
+            // flowLayoutPanelTasks
             // 
-            taskListView.Columns.AddRange(new ColumnHeader[] { taskName, taskDescription, taskDueDate });
-            taskListView.Location = new Point(129, 125);
-            taskListView.Name = "taskListView";
-            taskListView.Size = new Size(529, 97);
-            taskListView.TabIndex = 1;
-            taskListView.UseCompatibleStateImageBehavior = false;
-            taskListView.View = View.Details;
-            taskListView.SelectedIndexChanged += taskListView_SelectedIndexChanged;
-            // 
-            // taskName
-            // 
-            taskName.Text = "Task";
-            taskName.Width = 100;
-            // 
-            // taskDescription
-            // 
-            taskDescription.Text = "Description";
-            taskDescription.Width = 150;
-            // 
-            // taskDueDate
-            // 
-            taskDueDate.Text = "Due Date";
-            taskDueDate.Width = 150;
+            flowLayoutPanelTasks.AutoScroll = true;
+            flowLayoutPanelTasks.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanelTasks.Location = new Point(78, 63);
+            flowLayoutPanelTasks.Name = "flowLayoutPanelTasks";
+            flowLayoutPanelTasks.Size = new Size(596, 307);
+            flowLayoutPanelTasks.TabIndex = 1;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(767, 538);
-            Controls.Add(taskListView);
+            Controls.Add(flowLayoutPanelTasks);
             Controls.Add(btnAddTask);
             Name = "MainForm";
             Text = "Task Page";
@@ -90,9 +70,6 @@ namespace Trackit
         #endregion
 
         private Button btnAddTask;
-        private ListView taskListView;
-        private ColumnHeader taskName;
-        private ColumnHeader taskDescription;
-        private ColumnHeader taskDueDate;
+        private FlowLayoutPanel flowLayoutPanelTasks;
     }
 }

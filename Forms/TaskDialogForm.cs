@@ -15,20 +15,18 @@ namespace Trackit
     public partial class TaskDialogForm : Form
     {
         List<UserTask> taskList = UserTaskManager.Instance.TaskList;
-        MainForm mainForm;
+        //MainForm mainForm;
 
-        public TaskDialogForm(MainForm mainForm)
+        public TaskDialogForm()
         {
             InitializeComponent();
-            this.mainForm = mainForm;
+           
             // Set the custom format to display date and time 
             dateTimePickerDueDate.CustomFormat = "MM/dd/yyyy hh:mm tt";
         }
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            UserTaskManager taskManager = UserTaskManager.Instance;
-
             string taskName = textBoxTaskName.Text;
             string taskDescription = textBoxTaskDescription.Text;
             DateTime dueDate = dateTimePickerDueDate.Value;
@@ -36,7 +34,7 @@ namespace Trackit
             // Validate user input
             if (!ValidateInput(taskName, taskDescription))
             {
-                return;      
+                return;
             }
 
             // Capture user input data and create a new task
@@ -46,16 +44,14 @@ namespace Trackit
                 CompletedDate: null,
                 DueDate: dueDate,
                 IsCompleted: false
-             );
+            );
 
-            // Clear out fields 
+            // Clear out fields
             ClearFormFields();
 
-            mainForm.PopulateListView();
-
-            MessageBox.Show($"Successfully added task: {taskName}");
-
-            
+            // Close the form with DialogResult.OK to notify MainForm that a task was added
+            this.DialogResult = DialogResult.OK;
+            this.Close();  // This will trigger MainForm to load tasks
         }
 
 
@@ -78,7 +74,7 @@ namespace Trackit
             }
             else if (string.IsNullOrWhiteSpace(taskDescription))
             {
-                MessageBox.Show("Task description be empty.");
+                MessageBox.Show("Task description cannot be empty.");
                 return false;
             }
            return true;

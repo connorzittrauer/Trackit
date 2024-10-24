@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Trackit.Forms;
 using Trackit.Models;
 
 namespace Trackit
@@ -9,40 +10,57 @@ namespace Trackit
         public MainForm()
         {
             InitializeComponent();
-
         }
+
+        private void LoadTasks()
+        {
+            // Clear existing controls in the FlowLayoutPanel before adding new ones
+            flowLayoutPanelTasks.Controls.Clear();
+
+            // Get the current list of tasks from UserTaskManager
+            List<UserTask> taskList = UserTaskManager.Instance.TaskList;
+
+            // Iterate through the task list, add a new card to the flow panel
+            foreach (var task in taskList)
+            {
+                // Create a new TaskCard for each task
+                TaskCard taskCard = new TaskCard();
+
+                // Set details for the task card
+                taskCard.TaskName = task.TaskName;
+                taskCard.TaskDescription = task.TaskDescription;
+                taskCard.TaskDueDate = task.DueDate?.ToString("MM/dd/yyyy hh:mm tt") ?? "N/A";
+
+                // Hook up the Complete button event
+                taskCard.CompleteButtonClick += (sender, e) => MarkTaskComplete(task);
+
+                // Add the TaskCard to the FlowLayoutPanel
+                flowLayoutPanelTasks.Controls.Add(taskCard);
+            }
+        }
+
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
+            // Launch Task Dialog
+            TaskDialogForm taskDialogForm = new TaskDialogForm();
 
-            /* Launch Task Dialog 
-             * The 'this' keyword is passed to TaskDialog so that has
-             * access to all of MainForms UI components.
-             */
-            TaskDialogForm taskDialogForm = new TaskDialogForm(this);
-            taskDialogForm.ShowDialog();
-
-        }
-        // THERE IS POSSIBLY A BUG HERE!
-        public void PopulateListView()
-        {
-            // Clear existing items to avoid dupes
-            taskListView.Items.Clear();
-
-            foreach (var task in taskList)
+            // Show the dialog and check if the user clicked OK
+            if (taskDialogForm.ShowDialog() == DialogResult.OK)
             {
-                ListViewItem item = new ListViewItem(task.TaskName);
-
-                item.SubItems.Add(task.TaskDescription);
-                item.SubItems.Add(task.DueDate?.ToString("MM/dd/yyyy hh:mm tt") ?? "N/A");
-                taskListView.Items.Add(item);
+                // Reload the task list to reflect the newly added task
+                LoadTasks();
             }
-
         }
 
-        private void taskListView_SelectedIndexChanged(object sender, EventArgs e)
+        private void MarkTaskComplete(UserTask task)
         {
+            task.IsCompleted = true;
+            MessageBox.Show($"Task '{task.TaskName}' marked complete");
 
+            // Optionally, reload the task list (if you want to remove completed tasks)
+            LoadTasks();
         }
+
     }
 }
