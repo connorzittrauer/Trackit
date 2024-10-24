@@ -9,8 +9,6 @@ namespace Trackit
         public MainForm()
         {
             InitializeComponent();
-       
-            
         }
 
         private void btnAddTask_Click(object sender, EventArgs e)
@@ -27,8 +25,9 @@ namespace Trackit
         // THERE IS POSSIBLY A BUG HERE!
         private void PopulateListView()
         {
-            // Clear existing items to avoid duplication
+            // Clear existing items to avoid dupes
             taskListView.Items.Clear();
+
             foreach (var task in taskList)
             {
                 ListViewItem item = new ListViewItem(task.TaskName);
