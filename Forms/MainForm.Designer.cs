@@ -34,11 +34,12 @@ namespace Trackit
         {
             btnAddTask = new Button();
             flowLayoutPanelTasks = new FlowLayoutPanel();
+            label1 = new Label();
             SuspendLayout();
             // 
             // btnAddTask
             // 
-            btnAddTask.Location = new Point(314, 397);
+            btnAddTask.Location = new Point(283, 391);
             btnAddTask.Name = "btnAddTask";
             btnAddTask.Size = new Size(133, 46);
             btnAddTask.TabIndex = 0;
@@ -49,29 +50,41 @@ namespace Trackit
             // flowLayoutPanelTasks
             // 
             flowLayoutPanelTasks.AutoScroll = true;
-            flowLayoutPanelTasks.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanelTasks.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanelTasks.Location = new Point(55, 29);
+            flowLayoutPanelTasks.Location = new Point(190, 59);
             flowLayoutPanelTasks.Name = "flowLayoutPanelTasks";
-            flowLayoutPanelTasks.Size = new Size(662, 344);
+            flowLayoutPanelTasks.Size = new Size(329, 316);
             flowLayoutPanelTasks.TabIndex = 1;
             flowLayoutPanelTasks.WrapContents = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft New Tai Lue", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(304, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(94, 25);
+            label1.TabIndex = 2;
+            label1.Text = "Todo List";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(767, 538);
+            ClientSize = new Size(715, 491);
+            Controls.Add(label1);
             Controls.Add(flowLayoutPanelTasks);
             Controls.Add(btnAddTask);
             Name = "MainForm";
             Text = "Task Page";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button btnAddTask;
         private FlowLayoutPanel flowLayoutPanelTasks;
+        private Label label1;
     }
 }

@@ -28,47 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            taskPanel = new Panel();
             lblDueDate = new Label();
             lblTaskDesc = new Label();
             btnComplete = new Button();
             lblTaskName = new Label();
-            taskPanel.SuspendLayout();
             SuspendLayout();
-            // 
-            // taskPanel
-            // 
-            taskPanel.BackColor = SystemColors.ControlLight;
-            taskPanel.Controls.Add(lblDueDate);
-            taskPanel.Controls.Add(lblTaskDesc);
-            taskPanel.Controls.Add(btnComplete);
-            taskPanel.Controls.Add(lblTaskName);
-            taskPanel.Location = new Point(0, 0);
-            taskPanel.Name = "taskPanel";
-            taskPanel.Size = new Size(297, 177);
-            taskPanel.TabIndex = 1;
             // 
             // lblDueDate
             // 
             lblDueDate.AutoSize = true;
-            lblDueDate.Location = new Point(3, 0);
+            lblDueDate.Font = new Font("Microsoft New Tai Lue", 9F);
+            lblDueDate.Location = new Point(9, 9);
             lblDueDate.Name = "lblDueDate";
-            lblDueDate.Size = new Size(55, 15);
+            lblDueDate.Size = new Size(56, 17);
             lblDueDate.TabIndex = 3;
             lblDueDate.Text = "Due Date";
             // 
             // lblTaskDesc
             // 
             lblTaskDesc.AutoSize = true;
-            lblTaskDesc.Location = new Point(99, 66);
+            lblTaskDesc.Font = new Font("Microsoft New Tai Lue", 9F);
+            lblTaskDesc.Location = new Point(93, 67);
             lblTaskDesc.Name = "lblTaskDesc";
-            lblTaskDesc.Size = new Size(92, 15);
+            lblTaskDesc.Size = new Size(95, 17);
             lblTaskDesc.TabIndex = 2;
             lblTaskDesc.Text = "Task Description";
             // 
             // btnComplete
             // 
-            btnComplete.Location = new Point(111, 107);
+            btnComplete.Location = new Point(101, 113);
             btnComplete.Name = "btnComplete";
             btnComplete.Size = new Size(75, 23);
             btnComplete.TabIndex = 1;
@@ -78,29 +66,29 @@
             // lblTaskName
             // 
             lblTaskName.AutoSize = true;
-            lblTaskName.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTaskName.Location = new Point(94, 29);
+            lblTaskName.Font = new Font("Microsoft Tai Le", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTaskName.Location = new Point(87, 38);
             lblTaskName.Name = "lblTaskName";
-            lblTaskName.Size = new Size(107, 25);
+            lblTaskName.Size = new Size(107, 23);
             lblTaskName.TabIndex = 0;
             lblTaskName.Text = "Task Name";
-            lblTaskName.Click += lblTaskName_Click;
             // 
             // TaskCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(taskPanel);
+            BackColor = Color.White;
+            Controls.Add(lblTaskDesc);
+            Controls.Add(lblDueDate);
+            Controls.Add(lblTaskName);
+            Controls.Add(btnComplete);
             Name = "TaskCard";
-            Size = new Size(297, 177);
-            taskPanel.ResumeLayout(false);
-            taskPanel.PerformLayout();
+            Size = new Size(293, 172);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Panel taskPanel;
         private Label lblTaskDesc;
         private Button btnComplete;
         private Label lblTaskName;

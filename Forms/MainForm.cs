@@ -31,11 +31,30 @@ namespace Trackit
                 taskCard.TaskDescription = task.TaskDescription;
                 taskCard.TaskDueDate = task.DueDate?.ToString("MM/dd/yyyy hh:mm tt") ?? "N/A";
 
-                // Hook up the Complete button event
-                taskCard.CompleteButtonClick += (sender, e) => MarkTaskComplete(task);
+
+
+                // Removes and completes a task
+                taskCard.CompleteButtonClick += (sender, e) =>
+                {
+                    task.IsCompleted = true;
+
+                    // Remove from internal task list
+                    UserTaskManager.Instance.RemoveTask(task);
+
+                    // Remove from FlowLayoutPanel
+                    flowLayoutPanelTasks.Controls.Remove(taskCard);
+
+                    MessageBox.Show($"Task '{task.TaskName}' marked as complete!");
+
+                    UserTaskManager.Instance.PrintTasks();
+
+                };
+                
 
                 flowLayoutPanelTasks.Controls.Add(taskCard);
             }
+
+
         }
 
 

@@ -37,14 +37,20 @@ namespace Trackit.Models
             UserTask.TaskCreated += AddTask;
         }
 
-        // Method to add a task to the list
+      
         public void AddTask(UserTask task)
         {
             TaskList.Add(task);
-            Debug.WriteLine(task.ToString());
+            Debug.WriteLine("TASK ADDED: " + task.TaskID + " " + task.TaskName);
         }
 
-        // Helper method for printing task list
+        public void RemoveTask(UserTask task)
+        {
+            TaskList.Remove(task);
+            Debug.WriteLine("TASK REMOVED: " + task.TaskID + " " + task.TaskName);
+        }
+
+        // Helper debug method for printing task list
         public void PrintTasks()
         {
             Debug.WriteLine("Entire Task List: ");
@@ -52,6 +58,7 @@ namespace Trackit.Models
             {
                 Debug.WriteLine(task);
             }
+
         }
     }
 }

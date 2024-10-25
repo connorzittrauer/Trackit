@@ -45,7 +45,7 @@ namespace Trackit
                 IsCompleted: false
             );
 
-            // Clear out fields
+
             ClearFormFields();
 
             /* 

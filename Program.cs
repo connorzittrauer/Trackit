@@ -16,7 +16,7 @@ namespace Trackit
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             
-            
+            // Need to run a login form here first 
             Application.Run(new MainForm());
     
            

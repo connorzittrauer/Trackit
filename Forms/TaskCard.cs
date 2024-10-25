@@ -45,9 +45,7 @@ namespace Trackit.Forms
             remove => btnComplete.Click -= value;
         }
 
-        private void lblTaskName_Click(object sender, EventArgs e)
-        {
 
-        }
+
     }
 }
