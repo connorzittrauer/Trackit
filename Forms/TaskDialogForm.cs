@@ -15,7 +15,6 @@ namespace Trackit
     public partial class TaskDialogForm : Form
     {
         List<UserTask> taskList = UserTaskManager.Instance.TaskList;
-        //MainForm mainForm;
 
         public TaskDialogForm()
         {
@@ -49,9 +48,15 @@ namespace Trackit
             // Clear out fields
             ClearFormFields();
 
-            // Close the form with DialogResult.OK to notify MainForm that a task was added
-            this.DialogResult = DialogResult.OK;
-            this.Close();  // This will trigger MainForm to load tasks
+            /* 
+             * These lines are important to trigger the panes to populate the FlowLayoutPanel.
+             * DialogResult.OK indicates the outcome of a from when it is closed,
+             * specifying that the dialog box was sucessfully completed.
+             * 
+             */
+            
+            this.DialogResult = DialogResult.OK;  //Dialog result automatically closes a MODAL form in Windows Forms
+            this.Close();  // This will trigger MainForm to load tasks!
         }
 
 

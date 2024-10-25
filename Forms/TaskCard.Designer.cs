@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             taskPanel = new Panel();
+            lblDueDate = new Label();
             lblTaskDesc = new Label();
             btnComplete = new Button();
             lblTaskName = new Label();
-            lblDueDate = new Label();
             taskPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,10 +48,19 @@
             taskPanel.Size = new Size(297, 177);
             taskPanel.TabIndex = 1;
             // 
+            // lblDueDate
+            // 
+            lblDueDate.AutoSize = true;
+            lblDueDate.Location = new Point(3, 0);
+            lblDueDate.Name = "lblDueDate";
+            lblDueDate.Size = new Size(55, 15);
+            lblDueDate.TabIndex = 3;
+            lblDueDate.Text = "Due Date";
+            // 
             // lblTaskDesc
             // 
             lblTaskDesc.AutoSize = true;
-            lblTaskDesc.Location = new Point(94, 47);
+            lblTaskDesc.Location = new Point(99, 66);
             lblTaskDesc.Name = "lblTaskDesc";
             lblTaskDesc.Size = new Size(92, 15);
             lblTaskDesc.TabIndex = 2;
@@ -69,21 +78,13 @@
             // lblTaskName
             // 
             lblTaskName.AutoSize = true;
-            lblTaskName.Location = new Point(111, 16);
+            lblTaskName.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTaskName.Location = new Point(94, 29);
             lblTaskName.Name = "lblTaskName";
-            lblTaskName.Size = new Size(64, 15);
+            lblTaskName.Size = new Size(107, 25);
             lblTaskName.TabIndex = 0;
             lblTaskName.Text = "Task Name";
             lblTaskName.Click += lblTaskName_Click;
-            // 
-            // lblDueDate
-            // 
-            lblDueDate.AutoSize = true;
-            lblDueDate.Location = new Point(111, 76);
-            lblDueDate.Name = "lblDueDate";
-            lblDueDate.Size = new Size(55, 15);
-            lblDueDate.TabIndex = 3;
-            lblDueDate.Text = "Due Date";
             // 
             // TaskCard
             // 

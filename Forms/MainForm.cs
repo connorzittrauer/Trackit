@@ -6,7 +6,7 @@ namespace Trackit
 {
     public partial class MainForm : Form
     {
-        List<UserTask> taskList = UserTaskManager.Instance.TaskList;
+       
         public MainForm()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace Trackit
             // Iterate through the task list, add a new card to the flow panel
             foreach (var task in taskList)
             {
-                // Create a new TaskCard for each task
+
                 TaskCard taskCard = new TaskCard();
 
                 // Set details for the task card
@@ -34,7 +34,6 @@ namespace Trackit
                 // Hook up the Complete button event
                 taskCard.CompleteButtonClick += (sender, e) => MarkTaskComplete(task);
 
-                // Add the TaskCard to the FlowLayoutPanel
                 flowLayoutPanelTasks.Controls.Add(taskCard);
             }
         }
@@ -42,10 +41,10 @@ namespace Trackit
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            // Launch Task Dialog
+            // Launch Task Dialog Form
             TaskDialogForm taskDialogForm = new TaskDialogForm();
 
-            // Show the dialog and check if the user clicked OK
+            // This checks that the Dialog Result from the Task DialogForm is OK, before loading all tasks.
             if (taskDialogForm.ShowDialog() == DialogResult.OK)
             {
                 // Reload the task list to reflect the newly added task
@@ -58,7 +57,9 @@ namespace Trackit
             task.IsCompleted = true;
             MessageBox.Show($"Task '{task.TaskName}' marked complete");
 
-            // Optionally, reload the task list (if you want to remove completed tasks)
+            // TODO: remove task from pane
+
+            // Optionally, reload the completed task list 
             LoadTasks();
         }
 

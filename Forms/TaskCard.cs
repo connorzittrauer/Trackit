@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* 
+ * A reusable UserControl Task Card component for the FlowLayoutPanel
+ * This displays the task details.
+*/
 namespace Trackit.Forms
 {
     public partial class TaskCard : UserControl

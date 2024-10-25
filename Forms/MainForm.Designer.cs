@@ -49,11 +49,13 @@ namespace Trackit
             // flowLayoutPanelTasks
             // 
             flowLayoutPanelTasks.AutoScroll = true;
+            flowLayoutPanelTasks.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanelTasks.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanelTasks.Location = new Point(78, 63);
+            flowLayoutPanelTasks.Location = new Point(55, 29);
             flowLayoutPanelTasks.Name = "flowLayoutPanelTasks";
-            flowLayoutPanelTasks.Size = new Size(596, 307);
+            flowLayoutPanelTasks.Size = new Size(662, 344);
             flowLayoutPanelTasks.TabIndex = 1;
+            flowLayoutPanelTasks.WrapContents = false;
             // 
             // MainForm
             // 
