@@ -37,6 +37,7 @@ namespace Trackit
             settingsToolStripMenuItem = new ToolStripMenuItem();
             tasksToolStripMenuItem = new ToolStripMenuItem();
             historyToolStripMenuItem = new ToolStripMenuItem();
+            pomodoroToolStripMenuItem = new ToolStripMenuItem();
             taskListview = new ListView();
             colTaskName = new ColumnHeader();
             colTaskDescription = new ColumnHeader();
@@ -49,7 +50,7 @@ namespace Trackit
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.Menu;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { logoutToolStripMenuItem, settingsToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { logoutToolStripMenuItem, settingsToolStripMenuItem, pomodoroToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(715, 24);
@@ -81,16 +82,23 @@ namespace Trackit
             historyToolStripMenuItem.Size = new Size(121, 22);
             historyToolStripMenuItem.Text = "History";
             // 
+            // pomodoroToolStripMenuItem
+            // 
+            pomodoroToolStripMenuItem.Name = "pomodoroToolStripMenuItem";
+            pomodoroToolStripMenuItem.Size = new Size(76, 20);
+            pomodoroToolStripMenuItem.Text = "Pomodoro";
+            // 
             // taskListview
             // 
             taskListview.Columns.AddRange(new ColumnHeader[] { colTaskName, colTaskDescription, colDateCreated, colDueDate });
             taskListview.FullRowSelect = true;
-            taskListview.Location = new Point(0, 27);
+            taskListview.Location = new Point(12, 27);
             taskListview.Name = "taskListview";
-            taskListview.Size = new Size(703, 221);
+            taskListview.Size = new Size(691, 276);
             taskListview.TabIndex = 4;
             taskListview.UseCompatibleStateImageBehavior = false;
             taskListview.View = View.Details;
+            taskListview.ItemActivate += taskListview_ItemActivate;
             // 
             // colTaskName
             // 
@@ -113,7 +121,7 @@ namespace Trackit
             // 
             // btnAddTask
             // 
-            btnAddTask.Location = new Point(310, 309);
+            btnAddTask.Location = new Point(338, 320);
             btnAddTask.Name = "btnAddTask";
             btnAddTask.Size = new Size(75, 23);
             btnAddTask.TabIndex = 5;
@@ -151,5 +159,6 @@ namespace Trackit
         private Button btnAddTask;
         private ColumnHeader colDateCreated;
         private ColumnHeader colDueDate;
+        private ToolStripMenuItem pomodoroToolStripMenuItem;
     }
 }

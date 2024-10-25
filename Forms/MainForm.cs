@@ -44,5 +44,25 @@ namespace Trackit
 
             PopulateListView();
         }
+
+        // Occurs when an item is clicked
+        private void taskListview_ItemActivate(object sender, EventArgs e)
+        {
+            // Check if there is at least one selected item
+            if (taskListview.SelectedItems.Count > 0)
+            {
+                // Get the first selected item
+                ListViewItem selectedItem = taskListview.SelectedItems[0];
+
+                // Access the task name (assuming it's in the first column)
+                string taskName = selectedItem.SubItems[0].Text;
+
+                // Access other details if needed (e.g., second column for creation date)
+                string creationDate = selectedItem.SubItems[1].Text;
+
+                // Debug print the task name and other details
+                Debug.WriteLine($"Task Name: {taskName}, Created On: {creationDate}");
+            }
+        }
     }
 }
