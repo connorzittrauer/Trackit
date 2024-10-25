@@ -6,7 +6,7 @@ namespace Trackit
 {
     public partial class MainForm : Form
     {
-       
+
         public MainForm()
         {
             InitializeComponent();
@@ -31,36 +31,30 @@ namespace Trackit
                 taskCard.TaskDescription = task.TaskDescription;
                 taskCard.TaskDueDate = task.DueDate?.ToString("MM/dd/yyyy hh:mm tt") ?? "N/A";
 
-
-
-                // Removes and completes a task
+                // Removes and marks task as completes
                 taskCard.CompleteButtonClick += (sender, e) =>
                 {
                     task.IsCompleted = true;
 
-                    // Remove from internal task list
+                    // Remove task from internal task list
                     UserTaskManager.Instance.RemoveTask(task);
 
-                    // Remove from FlowLayoutPanel
+                    // Remove task from FlowLayoutPanel
                     flowLayoutPanelTasks.Controls.Remove(taskCard);
 
-                    MessageBox.Show($"Task '{task.TaskName}' marked as complete!");
+                    //MessageBox.Show($"Task '{task.TaskName}' marked as complete!");
 
                     UserTaskManager.Instance.PrintTasks();
 
                 };
-                
 
                 flowLayoutPanelTasks.Controls.Add(taskCard);
             }
-
-
         }
-
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            // Launch Task Dialog Form
+
             TaskDialogForm taskDialogForm = new TaskDialogForm();
 
             // This checks that the Dialog Result from the Task DialogForm is OK, before loading all tasks.
@@ -71,16 +65,9 @@ namespace Trackit
             }
         }
 
-        private void MarkTaskComplete(UserTask task)
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            task.IsCompleted = true;
-            MessageBox.Show($"Task '{task.TaskName}' marked complete");
 
-            // TODO: remove task from pane
-
-            // Optionally, reload the completed task list 
-            LoadTasks();
         }
-
     }
 }

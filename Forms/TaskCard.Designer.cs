@@ -38,7 +38,7 @@
             // 
             lblDueDate.AutoSize = true;
             lblDueDate.Font = new Font("Microsoft New Tai Lue", 9F);
-            lblDueDate.Location = new Point(9, 9);
+            lblDueDate.Location = new Point(236, 20);
             lblDueDate.Name = "lblDueDate";
             lblDueDate.Size = new Size(56, 17);
             lblDueDate.TabIndex = 3;
@@ -48,7 +48,7 @@
             // 
             lblTaskDesc.AutoSize = true;
             lblTaskDesc.Font = new Font("Microsoft New Tai Lue", 9F);
-            lblTaskDesc.Location = new Point(93, 67);
+            lblTaskDesc.Location = new Point(125, 20);
             lblTaskDesc.Name = "lblTaskDesc";
             lblTaskDesc.Size = new Size(95, 17);
             lblTaskDesc.TabIndex = 2;
@@ -56,7 +56,7 @@
             // 
             // btnComplete
             // 
-            btnComplete.Location = new Point(101, 113);
+            btnComplete.Location = new Point(525, 14);
             btnComplete.Name = "btnComplete";
             btnComplete.Size = new Size(75, 23);
             btnComplete.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             lblTaskName.AutoSize = true;
             lblTaskName.Font = new Font("Microsoft Tai Le", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTaskName.Location = new Point(87, 38);
+            lblTaskName.Location = new Point(3, 15);
             lblTaskName.Name = "lblTaskName";
             lblTaskName.Size = new Size(107, 23);
             lblTaskName.TabIndex = 0;
@@ -77,13 +77,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = SystemColors.HighlightText;
+            BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(lblTaskDesc);
             Controls.Add(lblDueDate);
             Controls.Add(lblTaskName);
             Controls.Add(btnComplete);
             Name = "TaskCard";
-            Size = new Size(293, 172);
+            Size = new Size(695, 50);
             ResumeLayout(false);
             PerformLayout();
         }
