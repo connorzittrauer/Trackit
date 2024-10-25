@@ -32,39 +32,19 @@ namespace Trackit
         /// </summary>
         private void InitializeComponent()
         {
-            btnAddTask = new Button();
-            flowLayoutPanelTasks = new FlowLayoutPanel();
             menuStrip1 = new MenuStrip();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             tasksToolStripMenuItem = new ToolStripMenuItem();
             historyToolStripMenuItem = new ToolStripMenuItem();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            taskListview = new ListView();
+            colTaskName = new ColumnHeader();
+            colTaskDescription = new ColumnHeader();
+            colDateCreated = new ColumnHeader();
+            colDueDate = new ColumnHeader();
+            btnAddTask = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnAddTask
-            // 
-            btnAddTask.Location = new Point(284, 326);
-            btnAddTask.Name = "btnAddTask";
-            btnAddTask.Size = new Size(133, 32);
-            btnAddTask.TabIndex = 0;
-            btnAddTask.Text = "Add Task";
-            btnAddTask.UseVisualStyleBackColor = true;
-            btnAddTask.Click += btnAddTask_Click;
-            // 
-            // flowLayoutPanelTasks
-            // 
-            flowLayoutPanelTasks.AutoScroll = true;
-            flowLayoutPanelTasks.BackColor = Color.White;
-            flowLayoutPanelTasks.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanelTasks.Location = new Point(0, 50);
-            flowLayoutPanelTasks.Name = "flowLayoutPanelTasks";
-            flowLayoutPanelTasks.Size = new Size(715, 270);
-            flowLayoutPanelTasks.TabIndex = 1;
-            flowLayoutPanelTasks.WrapContents = false;
             // 
             // menuStrip1
             // 
@@ -81,7 +61,6 @@ namespace Trackit
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             logoutToolStripMenuItem.Size = new Size(57, 20);
             logoutToolStripMenuItem.Text = "Logout";
-            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
             // settingsToolStripMenuItem
             // 
@@ -102,32 +81,45 @@ namespace Trackit
             historyToolStripMenuItem.Size = new Size(121, 22);
             historyToolStripMenuItem.Text = "History";
             // 
-            // label1
+            // taskListview
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 32);
-            label1.Name = "label1";
-            label1.Size = new Size(29, 15);
-            label1.TabIndex = 4;
-            label1.Text = "Task";
+            taskListview.Columns.AddRange(new ColumnHeader[] { colTaskName, colTaskDescription, colDateCreated, colDueDate });
+            taskListview.FullRowSelect = true;
+            taskListview.Location = new Point(0, 27);
+            taskListview.Name = "taskListview";
+            taskListview.Size = new Size(703, 221);
+            taskListview.TabIndex = 4;
+            taskListview.UseCompatibleStateImageBehavior = false;
+            taskListview.View = View.Details;
             // 
-            // label2
+            // colTaskName
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(87, 32);
-            label2.Name = "label2";
-            label2.Size = new Size(67, 15);
-            label2.TabIndex = 5;
-            label2.Text = "Description";
+            colTaskName.Text = "Task";
             // 
-            // label3
+            // colTaskDescription
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(268, 32);
-            label3.Name = "label3";
-            label3.Size = new Size(55, 15);
-            label3.TabIndex = 6;
-            label3.Text = "Due Date";
+            colTaskDescription.Text = "Task Description";
+            colTaskDescription.Width = 150;
+            // 
+            // colDateCreated
+            // 
+            colDateCreated.Text = "Date Created";
+            colDateCreated.Width = 100;
+            // 
+            // colDueDate
+            // 
+            colDueDate.Text = "Due Date";
+            colDueDate.Width = 100;
+            // 
+            // btnAddTask
+            // 
+            btnAddTask.Location = new Point(310, 309);
+            btnAddTask.Name = "btnAddTask";
+            btnAddTask.Size = new Size(75, 23);
+            btnAddTask.TabIndex = 5;
+            btnAddTask.Text = "Add Task";
+            btnAddTask.UseVisualStyleBackColor = true;
+            btnAddTask.Click += btnAddTask_Click;
             // 
             // MainForm
             // 
@@ -135,11 +127,8 @@ namespace Trackit
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
             ClientSize = new Size(715, 368);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(flowLayoutPanelTasks);
             Controls.Add(btnAddTask);
+            Controls.Add(taskListview);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
@@ -151,16 +140,16 @@ namespace Trackit
         }
 
         #endregion
-
-        private Button btnAddTask;
-        private FlowLayoutPanel flowLayoutPanelTasks;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private ToolStripMenuItem settingsToolStripMenuItem;
         private ToolStripMenuItem tasksToolStripMenuItem;
         private ToolStripMenuItem historyToolStripMenuItem;
-        private Label label1;
-        private Label label2;
-        private Label label3;
+        private ListView taskListview;
+        private ColumnHeader colTaskName;
+        private ColumnHeader colTaskDescription;
+        private Button btnAddTask;
+        private ColumnHeader colDateCreated;
+        private ColumnHeader colDueDate;
     }
 }
