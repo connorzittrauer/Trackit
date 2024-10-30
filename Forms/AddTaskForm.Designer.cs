@@ -1,7 +1,7 @@
 ﻿
 namespace Trackit
 {
-    partial class AddTaskDialogForm
+    partial class AddTaskForm
     {
         /// <summary>
         /// Required designer variable.

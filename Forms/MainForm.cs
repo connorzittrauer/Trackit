@@ -6,11 +6,14 @@ namespace Trackit
 {
     public partial class MainForm : Form
     {
-       
+        List<UserTask> taskList = UserTaskManager.Instance.TaskList;
+
         public MainForm()
         {
             InitializeComponent();
         }
+
+
 
         private void UpdateListView()
         {
@@ -19,7 +22,7 @@ namespace Trackit
             taskListview.Items.Clear();
 
             // Add tasks to ListView columns 
-            foreach (var task in UserTaskManager.Instance.TaskList)
+            foreach (var task in taskList)
             {
                 ListViewItem item = new ListViewItem(task.TaskName);
 
@@ -39,10 +42,12 @@ namespace Trackit
 
         }
 
+  
+
         private void btnAddTask_Click(object sender, EventArgs e)
         {
             // Launch Task Dialog 
-            AddTaskDialogForm taskDialogForm = new AddTaskDialogForm();
+            AddTaskForm taskDialogForm = new AddTaskForm();
             taskDialogForm.ShowDialog();
 
             UpdateListView();

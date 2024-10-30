@@ -12,11 +12,11 @@ using Trackit.Models;
 
 namespace Trackit
 {
-    public partial class AddTaskDialogForm : Form
+    public partial class AddTaskForm : Form
     {
-        List<UserTask> taskList = UserTaskManager.Instance.TaskList;
+        //List<UserTask> taskList = UserTaskManager.Instance.TaskList;
 
-        public AddTaskDialogForm()
+        public AddTaskForm()
         {
             InitializeComponent();
            
