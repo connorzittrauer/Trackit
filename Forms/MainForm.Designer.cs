@@ -117,7 +117,7 @@ namespace Trackit
             // colDueDate
             // 
             colDueDate.Text = "Due Date";
-            colDueDate.Width = 100;
+            colDueDate.Width = 200;
             // 
             // btnAddTask
             // 

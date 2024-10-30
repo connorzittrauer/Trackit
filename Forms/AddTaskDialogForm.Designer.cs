@@ -1,7 +1,7 @@
 ﻿
 namespace Trackit
 {
-    partial class TaskDialogForm
+    partial class AddTaskDialogForm
     {
         /// <summary>
         /// Required designer variable.
@@ -90,7 +90,7 @@ namespace Trackit
             // 
             // btnAddTask
             // 
-            btnAddTask.Location = new Point(170, 218);
+            btnAddTask.Location = new Point(162, 218);
             btnAddTask.Name = "btnAddTask";
             btnAddTask.Size = new Size(75, 23);
             btnAddTask.TabIndex = 7;
@@ -98,7 +98,7 @@ namespace Trackit
             btnAddTask.UseVisualStyleBackColor = true;
             btnAddTask.Click += btnAddTask_Click;
             // 
-            // TaskDialogForm
+            // AddTaskDialogForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -110,7 +110,7 @@ namespace Trackit
             Controls.Add(lblTaskDescription);
             Controls.Add(lblTaskName);
             Controls.Add(textBoxTaskName);
-            Name = "TaskDialogForm";
+            Name = "AddTaskDialogForm";
             Text = "TaskDialog";
             ResumeLayout(false);
             PerformLayout();
