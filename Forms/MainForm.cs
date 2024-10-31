@@ -6,14 +6,10 @@ namespace Trackit
 {
     public partial class MainForm : Form
     {
-        List<UserTask> taskList = UserTaskManager.Instance.TaskList;
-
         public MainForm()
         {
             InitializeComponent();
         }
-
-
 
         private void UpdateListView()
         {
@@ -22,7 +18,7 @@ namespace Trackit
             taskListview.Items.Clear();
 
             // Add tasks to ListView columns 
-            foreach (var task in taskList)
+            foreach (var task in UserTaskManager.Instance.TaskList)
             {
                 ListViewItem item = new ListViewItem(task.TaskName);
 
@@ -86,7 +82,6 @@ namespace Trackit
                         UpdateListView();
                     }
                 }
-                //UserTaskManager.Instance.PrintTasks();
                 
             }
         }

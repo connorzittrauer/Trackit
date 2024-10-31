@@ -14,8 +14,6 @@ namespace Trackit
 {
     public partial class AddTaskForm : Form
     {
-        //List<UserTask> taskList = UserTaskManager.Instance.TaskList;
-
         public AddTaskForm()
         {
             InitializeComponent();
@@ -45,6 +43,7 @@ namespace Trackit
                 IsCompleted: false
             );
 
+            UserTaskManager.Instance.AddTask(newTask);
 
             ClearFormFields();
 

@@ -28,8 +28,6 @@ namespace Trackit.Forms
 
         private void btnComplete_Click(object sender, EventArgs e)
         {
-            // Remove from internal task list and mark as completed
-            //UserTaskManager.Instance.TaskList.Remove(selectedTask);
             
             UserTaskManager.Instance.RemoveTask(selectedTask);
             selectedTask.IsCompleted = true;

@@ -32,9 +32,6 @@ namespace Trackit.Models
         private UserTaskManager()
         {
             TaskList = new List<UserTask>();
-
-            // Subscribes to the TaskCreated event in the UserTask class
-            UserTask.TaskCreated += AddTask;
         }
 
       

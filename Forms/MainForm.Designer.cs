@@ -53,7 +53,7 @@ namespace Trackit
             menuStrip1.Items.AddRange(new ToolStripItem[] { logoutToolStripMenuItem, settingsToolStripMenuItem, pomodoroToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(715, 24);
+            menuStrip1.Size = new Size(549, 24);
             menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -94,7 +94,7 @@ namespace Trackit
             taskListview.FullRowSelect = true;
             taskListview.Location = new Point(12, 27);
             taskListview.Name = "taskListview";
-            taskListview.Size = new Size(691, 276);
+            taskListview.Size = new Size(519, 276);
             taskListview.TabIndex = 4;
             taskListview.UseCompatibleStateImageBehavior = false;
             taskListview.View = View.Details;
@@ -121,7 +121,7 @@ namespace Trackit
             // 
             // btnAddTask
             // 
-            btnAddTask.Location = new Point(338, 320);
+            btnAddTask.Location = new Point(225, 323);
             btnAddTask.Name = "btnAddTask";
             btnAddTask.Size = new Size(75, 23);
             btnAddTask.TabIndex = 5;
@@ -134,7 +134,7 @@ namespace Trackit
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
-            ClientSize = new Size(715, 368);
+            ClientSize = new Size(549, 368);
             Controls.Add(btnAddTask);
             Controls.Add(taskListview);
             Controls.Add(menuStrip1);

@@ -6,7 +6,6 @@ namespace Trackit.Models
     public class UserTask
     {
         // Static event to notify subscribers when a task is created
-        public static event Action<UserTask> TaskCreated;
         private static int taskCounter = 0;
         public int TaskID { get; private set; }
         public string TaskName { get; set; }
@@ -28,8 +27,6 @@ namespace Trackit.Models
             this.IsCompleted = IsCompleted;
 
             // Automatically raise event after task creation
-            TaskCreated?.Invoke(this);
-
         }
 
         public override string ToString()
