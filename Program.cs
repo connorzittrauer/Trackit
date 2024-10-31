@@ -13,6 +13,9 @@ namespace Trackit
         {
             ApplicationConfiguration.Initialize();
 
+            DatabaseManager databaseManager = new DatabaseManager();
+            databaseManager.TestDatabaseConnection();
+
             // Application loop
             while (true)
             {
@@ -29,9 +32,6 @@ namespace Trackit
                 // User logged in successfully; start the main form
                 using (MainForm mainForm = new MainForm())
                 {
-                    DatabaseManager databaseManager = new DatabaseManager();
-                    databaseManager.TestDatabaseConnection();
-
                     Application.Run(mainForm);
                 }
 
