@@ -21,9 +21,6 @@ namespace Trackit.Forms
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            //txtBoxUsername.Text
-            //DatabaseHelper databaseHelper= new DatabaseHelper();
-            //databaseHelper.TestInsertUsers();
 
         }
 
@@ -32,23 +29,33 @@ namespace Trackit.Forms
             // Grab data from TextBox fields
             username = txtBoxUsername.Text;
             password = txtBoxPassword.Text;
+         
 
-            // Validate input fields
+            // Validate text input fields
             if (ValidInput(username, password))
             {
-                // Create a new user
-                User user = new User(username, password);
-
-                // Add user to database 
+                // Add new user to database 
                 DatabaseManager databaseManager = new DatabaseManager();
-                databaseManager.InsertUser(username, password);
+            
+                bool isInserted = databaseManager.InsertUser(username, password);
 
-                txtBoxPassword.Clear();
-                txtBoxUsername.Clear();
+                // Validate SQL database restrictions
+                if (isInserted) 
+                {
+                    txtBoxPassword.Clear();
+                    txtBoxUsername.Clear();
 
-                // Signup was successful 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                    // Signup was successful 
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                // Signup failed, stay on LoginForm
+                else
+                {
+                    txtBoxUsername.Clear();
+                    txtBoxPassword.Clear();
+                }
+
             }
 
         }

@@ -38,8 +38,6 @@ namespace Trackit
 
         }
 
-  
-
         private void btnAddTask_Click(object sender, EventArgs e)
         {
             // Launch Task Dialog 
@@ -65,7 +63,7 @@ namespace Trackit
                 /* Uses LINQ and a lambda expression to search and match the internal UserTaskManager TaskList TaskID
                  * to the currently selected ListView taskId and return the Task Object.
                  * 
-                 * This enables us to pass easily pass a Task to EditTaskForm() and to view its details and remove it from the list.    
+                 * This enables us to pass easily pass a Task to EditTaskForm(), view its details, and remove it from the list.    
                  */
                 UserTask selectedTask = UserTaskManager.Instance.TaskList.FirstOrDefault(task => task.TaskID == taskId);
                 

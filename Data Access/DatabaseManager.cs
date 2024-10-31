@@ -34,8 +34,11 @@ namespace Trackit.Data_Access
             }
         }
 
-        // Inserts a new user into the AppUser table
-        public void InsertUser(string username, string password)
+        /* 
+         * Inserts a new user into the AppUser table
+         * Returns a bool for ease of validation/input checking outside of this class. 
+         */
+        public bool InsertUser(string username, string password)
         {
             string connectionString = GetConnectionString();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -52,32 +55,23 @@ namespace Trackit.Data_Access
                         connection.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
                         Debug.WriteLine($"{rowsAffected} row(s) inserted.");
+                        return true; // Insertion successful
                     }
-                    // Catches a unique contraint error by number when a username already exists
+                    // Catches a unique contraint error by number if a username already exists
                     catch (SqlException ex) when (ex.Number == 2627)
                     {
                         MessageBox.Show("Username taken. Please choose another.");
+                        return false;
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Error inserting user: " + ex.Message);
+                        return false;
                     }
                 }
 
             }
         }
-
-        public void TestInsertUsers()
-        {
-            InsertUser("john_doe", "password123");
-            InsertUser("jane_smith", "securepassword");
-            InsertUser("alice_wonder", "mysecret");
-        }
-
-
-
-
-
 
     }
 }
