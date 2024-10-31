@@ -1,32 +1,50 @@
-using System.Diagnostics;
-using Trackit.Forms;
+using System;
+using System.Windows.Forms;
 using Trackit.Data_Access;
+using Trackit.Forms;
+using Trackit.Models;
+
 namespace Trackit
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-
-            // Test DB connection here
-            DatabaseManager databaseManager = new DatabaseManager();
-            databaseManager.TestDatabaseConnection();
-
-            // Show the LoginForm as a modal dialog first
-            using (LoginForm loginForm = new LoginForm()) 
+            // Application loop
+            while (true)
             {
-                if (loginForm.ShowDialog() == DialogResult.OK)
+                // Show the LoginForm as a modal dialog
+                using (LoginForm loginForm = new LoginForm())
                 {
-                    // Launch application if login was successful
-                    Application.Run(new MainForm());                
+                    if (loginForm.ShowDialog() != DialogResult.OK)
+                    {
+                        // User did not log in successfully; exit application
+                        break;
+                    }
+                }
+
+                // User logged in successfully; start the main form
+                using (MainForm mainForm = new MainForm())
+                {
+                    DatabaseManager databaseManager = new DatabaseManager();
+                    databaseManager.TestDatabaseConnection();
+
+                    Application.Run(mainForm);
+                }
+
+                // After MainForm is closed, check if user logged out
+                if (SessionManager.CurrentUser == null)
+                {
+                    // User logged out; loop back to show login form again
+                    continue;
+                }
+                else
+                {
+                    // User closed MainForm without logging out; exit application
+                    break;
                 }
             }
         }

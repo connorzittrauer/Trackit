@@ -13,7 +13,7 @@ namespace Trackit
 
         private void UpdateListView()
         {
-            
+
             // Clear existing items to avoid dupes
             taskListview.Items.Clear();
 
@@ -33,14 +33,12 @@ namespace Trackit
 
             }
 
-            // Print list for debugging purposes 
             UserTaskManager.Instance.PrintTasks();
 
         }
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            // Launch Task Dialog 
             AddTaskForm taskForm = new AddTaskForm();
             taskForm.ShowDialog();
 
@@ -50,14 +48,14 @@ namespace Trackit
         // Event triggered when a ListView item is clicked
         private void taskListview_ItemActivate(object sender, EventArgs e)
         {
- 
+
             // Check if there is at least one selected item
             if (taskListview.SelectedItems.Count > 0)
             {
                 // Get the first selected item
                 ListViewItem selectedItem = taskListview.SelectedItems[0];
-                
-                int taskId = (int)selectedItem.Tag; 
+
+                int taskId = (int)selectedItem.Tag;
 
 
                 /* Uses LINQ and a lambda expression to search and match the internal UserTaskManager TaskList TaskID
@@ -66,7 +64,7 @@ namespace Trackit
                  * This enables us to pass easily pass a Task to EditTaskForm(), view its details, and remove it from the list.    
                  */
                 UserTask selectedTask = UserTaskManager.Instance.TaskList.FirstOrDefault(task => task.TaskID == taskId);
-                
+
                 //Debug.WriteLine(selectedTask.ToString());
 
 
@@ -80,8 +78,17 @@ namespace Trackit
                         UpdateListView();
                     }
                 }
-                
+
             }
+        }
+        // Logout functionality
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            // Clear current user
+            SessionManager.CurrentUser = null;
+
+            this.Close();
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Diagnostics;
+using Trackit.Models;
 
 namespace Trackit.Data_Access
 {
@@ -73,5 +74,49 @@ namespace Trackit.Data_Access
             }
         }
 
+        // Searches for a user by username in the database,
+        // if found returns User object, returns null if not found. 
+        public User GetUserByUsername(string username)
+        {
+            string connectionString = GetConnectionString();
+            using (SqlConnection connection = new SqlConnection(connectionString)) 
+            {
+                string sql = "SELECT UserID, Username, Password FROM AppUser WHERE Username = @Username";
+                using (SqlCommand cmd = new SqlCommand(sql, connection)) 
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // User found by username, create a User object
+                                User user = new User
+                                {
+                                    UserID = Convert.ToInt32(reader["UserID"]),
+                                    UserName = reader["Username"].ToString(),
+                                    Password = reader["Password"].ToString()
+                                };
+                                return user;
+                            }
+                            else
+                            {
+                                // User not found 
+                                return null;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error retrieving user: " + ex.Message);
+                        return null;
+                    }
+                }
+
+            }
+        }
     }
 }
