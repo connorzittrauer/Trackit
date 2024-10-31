@@ -43,8 +43,8 @@ namespace Trackit
         private void btnAddTask_Click(object sender, EventArgs e)
         {
             // Launch Task Dialog 
-            AddTaskForm taskDialogForm = new AddTaskForm();
-            taskDialogForm.ShowDialog();
+            AddTaskForm taskForm = new AddTaskForm();
+            taskForm.ShowDialog();
 
             UpdateListView();
         }

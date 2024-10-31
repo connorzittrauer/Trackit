@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Trackit.Forms;
+using Trackit.Data_Access;
 namespace Trackit
 {
     internal static class Program
@@ -14,10 +15,20 @@ namespace Trackit
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            // Need to run a login form here first 
-            Application.Run(new LoginForm());
-            Application.Run(new MainForm());  
 
+            // Test DB connection here
+            DatabaseManager databaseManager = new DatabaseManager();
+            databaseManager.TestDatabaseConnection();
+
+            // Show the LoginForm as a modal dialog first
+            using (LoginForm loginForm = new LoginForm()) 
+            {
+                if (loginForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Launch application if login was successful
+                    Application.Run(new MainForm());                
+                }
+            }
         }
     }
 }

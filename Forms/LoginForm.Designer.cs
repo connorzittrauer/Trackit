@@ -32,9 +32,10 @@
             label2 = new Label();
             lblUsername = new Label();
             txtBoxUsername = new TextBox();
-            textBox1 = new TextBox();
+            txtBoxPassword = new TextBox();
             lblPassword = new Label();
             btnSignIn = new Button();
+            btnSignup = new Button();
             SuspendLayout();
             // 
             // label1
@@ -73,12 +74,12 @@
             txtBoxUsername.Size = new Size(186, 23);
             txtBoxUsername.TabIndex = 3;
             // 
-            // textBox1
+            // txtBoxPassword
             // 
-            textBox1.Location = new Point(169, 205);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(186, 23);
-            textBox1.TabIndex = 5;
+            txtBoxPassword.Location = new Point(169, 205);
+            txtBoxPassword.Name = "txtBoxPassword";
+            txtBoxPassword.Size = new Size(186, 23);
+            txtBoxPassword.TabIndex = 5;
             // 
             // lblPassword
             // 
@@ -92,7 +93,7 @@
             // 
             // btnSignIn
             // 
-            btnSignIn.Location = new Point(218, 261);
+            btnSignIn.Location = new Point(172, 265);
             btnSignIn.Name = "btnSignIn";
             btnSignIn.Size = new Size(75, 23);
             btnSignIn.TabIndex = 6;
@@ -100,13 +101,26 @@
             btnSignIn.UseVisualStyleBackColor = true;
             btnSignIn.Click += btnSignIn_Click;
             // 
+            // btnSignup
+            // 
+            btnSignup.BackColor = Color.FromArgb(192, 0, 0);
+            btnSignup.ForeColor = Color.White;
+            btnSignup.Location = new Point(269, 265);
+            btnSignup.Name = "btnSignup";
+            btnSignup.Size = new Size(75, 27);
+            btnSignup.TabIndex = 7;
+            btnSignup.Text = "Sign Up";
+            btnSignup.UseVisualStyleBackColor = false;
+            btnSignup.Click += btnSignup_Click;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(549, 368);
+            Controls.Add(btnSignup);
             Controls.Add(btnSignIn);
-            Controls.Add(textBox1);
+            Controls.Add(txtBoxPassword);
             Controls.Add(lblPassword);
             Controls.Add(txtBoxUsername);
             Controls.Add(lblUsername);
@@ -124,8 +138,9 @@
         private Label label2;
         private Label lblUsername;
         private TextBox txtBoxUsername;
-        private TextBox textBox1;
+        private TextBox txtBoxPassword;
         private Label lblPassword;
         private Button btnSignIn;
+        private Button btnSignup;
     }
 }

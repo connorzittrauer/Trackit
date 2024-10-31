@@ -29,7 +29,7 @@ namespace Trackit
             DateTime dueDate = dateTimePickerDueDate.Value;
 
             // Validate user input
-            if (!ValidateInput(taskName, taskDescription))
+            if (!ValidInput(taskName, taskDescription))
             {
                 return;
             }
@@ -68,7 +68,7 @@ namespace Trackit
         }
 
         // Validates user input and alerts if field is empty 
-        private bool ValidateInput(string taskName, string taskDescription)
+        private bool ValidInput(string taskName, string taskDescription)
         {
 
             if (string.IsNullOrWhiteSpace(taskName))
