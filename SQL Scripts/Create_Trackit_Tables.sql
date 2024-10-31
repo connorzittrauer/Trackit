@@ -1,6 +1,6 @@
 CREATE TABLE AppUser (
 	UserID INT PRIMARY KEY IDENTITY(1,1),    -- Auto increment primary key by 1, starting at 1
-	Username NVARCHAR(50) NOT NULL, 
+	Username NVARCHAR(50) NOT NULL UNIQUE, 
 	Password NVARCHAR(255) NOT NULL
 );
 
