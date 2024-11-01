@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Trackit.Models;
 using Trackit.Forms;
 
@@ -46,8 +46,13 @@ namespace Trackit
                 item.SubItems.Add(task.TaskDescription);
                 item.SubItems.Add(task.DateCreated.ToString("MM/dd/yyyy"));
                 item.SubItems.Add(task.DueDate?.ToString("MM/dd/yyyy hh:mm tt"));
-
                 item.SubItems.Add(task.IsCompleted ? "Yes" : "No");
+
+                if (task.IsCompleted)
+                {
+                    //item.BackColor = Color.LightGray;
+                    item.ForeColor = Color.DarkGray;
+                }
 
                 // Store the last object in the Tag property
                 item.Tag = task;

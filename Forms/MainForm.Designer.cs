@@ -37,6 +37,7 @@ namespace Trackit
             colTaskDescription = new ColumnHeader();
             colDateCreated = new ColumnHeader();
             colDueDate = new ColumnHeader();
+            colStatus = new ColumnHeader();
             btnAddTask = new Button();
             settingsMenuStrip = new MenuStrip();
             settingsToolStripMenuItem = new ToolStripMenuItem();
@@ -49,11 +50,11 @@ namespace Trackit
             // 
             // taskListview
             // 
-            taskListview.Columns.AddRange(new ColumnHeader[] { colTaskName, colTaskDescription, colDateCreated, colDueDate });
+            taskListview.Columns.AddRange(new ColumnHeader[] { colTaskName, colTaskDescription, colDateCreated, colDueDate, colStatus });
             taskListview.FullRowSelect = true;
             taskListview.Location = new Point(12, 27);
             taskListview.Name = "taskListview";
-            taskListview.Size = new Size(519, 276);
+            taskListview.Size = new Size(600, 276);
             taskListview.TabIndex = 4;
             taskListview.UseCompatibleStateImageBehavior = false;
             taskListview.View = View.Details;
@@ -78,9 +79,14 @@ namespace Trackit
             colDueDate.Text = "Due Date";
             colDueDate.Width = 200;
             // 
+            // colStatus
+            // 
+            colStatus.Text = "Complete";
+            colStatus.Width = 100;
+            // 
             // btnAddTask
             // 
-            btnAddTask.Location = new Point(225, 323);
+            btnAddTask.Location = new Point(265, 321);
             btnAddTask.Name = "btnAddTask";
             btnAddTask.Size = new Size(75, 23);
             btnAddTask.TabIndex = 5;
@@ -93,7 +99,7 @@ namespace Trackit
             settingsMenuStrip.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, viewToolStripMenuItem });
             settingsMenuStrip.Location = new Point(0, 0);
             settingsMenuStrip.Name = "settingsMenuStrip";
-            settingsMenuStrip.Size = new Size(549, 24);
+            settingsMenuStrip.Size = new Size(652, 24);
             settingsMenuStrip.TabIndex = 6;
             settingsMenuStrip.Text = "menuStrip1";
             // 
@@ -123,14 +129,14 @@ namespace Trackit
             viewTodoToolStripMenuItem.Checked = true;
             viewTodoToolStripMenuItem.CheckState = CheckState.Indeterminate;
             viewTodoToolStripMenuItem.Name = "viewTodoToolStripMenuItem";
-            viewTodoToolStripMenuItem.Size = new Size(180, 22);
+            viewTodoToolStripMenuItem.Size = new Size(100, 22);
             viewTodoToolStripMenuItem.Text = "Todo";
             viewTodoToolStripMenuItem.Click += viewTodoToolStripMenuItem_Click;
             // 
             // viewAllToolStripMenuItem
             // 
             viewAllToolStripMenuItem.Name = "viewAllToolStripMenuItem";
-            viewAllToolStripMenuItem.Size = new Size(180, 22);
+            viewAllToolStripMenuItem.Size = new Size(100, 22);
             viewAllToolStripMenuItem.Text = "All";
             viewAllToolStripMenuItem.Click += viewAllToolStripMenuItem_Click;
             // 
@@ -139,7 +145,7 @@ namespace Trackit
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
-            ClientSize = new Size(549, 368);
+            ClientSize = new Size(652, 368);
             Controls.Add(btnAddTask);
             Controls.Add(taskListview);
             Controls.Add(settingsMenuStrip);
@@ -164,5 +170,6 @@ namespace Trackit
         private ToolStripMenuItem viewToolStripMenuItem;
         private ToolStripMenuItem viewAllToolStripMenuItem;
         private ToolStripMenuItem viewTodoToolStripMenuItem;
+        private ColumnHeader colStatus;
     }
 }
