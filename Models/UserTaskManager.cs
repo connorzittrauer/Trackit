@@ -59,7 +59,6 @@ namespace Trackit.Models
             if (isAdded)
             {
                 TaskList.Add(task);
-                Debug.WriteLine("TASK ADDED: " + task.TaskID + " " + task.TaskName);
             }
         }
 

@@ -36,9 +36,6 @@ namespace Trackit
                 taskListview.Items.Add(item);
 
             }
-
-            UserTaskManager.Instance.PrintTasks();
-
         }
 
         private void btnAddTask_Click(object sender, EventArgs e)
@@ -74,6 +71,7 @@ namespace Trackit
 
             }
         }
+
         // Logout functionality
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {

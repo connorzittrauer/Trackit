@@ -108,6 +108,10 @@ namespace Trackit.Data_Access
                         object result = cmd.ExecuteScalar();
                         int newTaskId = Convert.ToInt32(result);
                         task.TaskID = newTaskId;
+
+                        // Log to console
+                        Debug.WriteLine($"{1} row(s) inserted with Task Name: {task.TaskName} and TaskID:{task.TaskID}");
+                        
                         return true;
                     }
                     catch (Exception ex)
@@ -125,12 +129,12 @@ namespace Trackit.Data_Access
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string sql = @"UPDATE Task
-                       SET TaskName = @TaskName,
-                           TaskDescription = @TaskDescription,
-                           DueDate = @DueDate,
-                           DateCompleted = @DateCompleted,
-                           IsCompleted = @IsCompleted
-                       WHERE TaskID = @TaskID";
+                             SET TaskName = @TaskName,
+                             TaskDescription = @TaskDescription,
+                             DueDate = @DueDate,
+                             DateCompleted = @DateCompleted,
+                             IsCompleted = @IsCompleted
+                             WHERE TaskID = @TaskID";
 
                 using (SqlCommand cmd = new SqlCommand(sql, connection))
                 {
@@ -145,6 +149,9 @@ namespace Trackit.Data_Access
                     {
                         connection.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
+
+                        Debug.WriteLine($"Completed task with Task Name: {task.TaskName} and TaskID:{task.TaskID}"); ;
+
                         return rowsAffected > 0;
                     }
                     catch (Exception ex)
