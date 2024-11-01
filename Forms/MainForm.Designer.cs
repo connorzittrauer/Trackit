@@ -32,55 +32,20 @@ namespace Trackit
         /// </summary>
         private void InitializeComponent()
         {
-            menuStrip1 = new MenuStrip();
-            logoutToolStripMenuItem = new ToolStripMenuItem();
-            settingsToolStripMenuItem = new ToolStripMenuItem();
-            tasksToolStripMenuItem = new ToolStripMenuItem();
-            historyToolStripMenuItem = new ToolStripMenuItem();
             taskListview = new ListView();
             colTaskName = new ColumnHeader();
             colTaskDescription = new ColumnHeader();
             colDateCreated = new ColumnHeader();
             colDueDate = new ColumnHeader();
             btnAddTask = new Button();
-            menuStrip1.SuspendLayout();
+            settingsMenuStrip = new MenuStrip();
+            settingsToolStripMenuItem = new ToolStripMenuItem();
+            logoutToolStripMenuItem = new ToolStripMenuItem();
+            viewToolStripMenuItem = new ToolStripMenuItem();
+            viewTodoToolStripMenuItem = new ToolStripMenuItem();
+            viewAllToolStripMenuItem = new ToolStripMenuItem();
+            settingsMenuStrip.SuspendLayout();
             SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = SystemColors.Menu;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { logoutToolStripMenuItem, settingsToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(549, 24);
-            menuStrip1.TabIndex = 3;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(57, 20);
-            logoutToolStripMenuItem.Text = "Logout";
-            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
-            // 
-            // settingsToolStripMenuItem
-            // 
-            settingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tasksToolStripMenuItem, historyToolStripMenuItem });
-            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(46, 20);
-            settingsToolStripMenuItem.Text = "Tasks";
-            // 
-            // tasksToolStripMenuItem
-            // 
-            tasksToolStripMenuItem.Name = "tasksToolStripMenuItem";
-            tasksToolStripMenuItem.Size = new Size(121, 22);
-            tasksToolStripMenuItem.Text = "Todo List";
-            // 
-            // historyToolStripMenuItem
-            // 
-            historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            historyToolStripMenuItem.Size = new Size(121, 22);
-            historyToolStripMenuItem.Text = "History";
             // 
             // taskListview
             // 
@@ -123,6 +88,52 @@ namespace Trackit
             btnAddTask.UseVisualStyleBackColor = true;
             btnAddTask.Click += btnAddTask_Click;
             // 
+            // settingsMenuStrip
+            // 
+            settingsMenuStrip.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, viewToolStripMenuItem });
+            settingsMenuStrip.Location = new Point(0, 0);
+            settingsMenuStrip.Name = "settingsMenuStrip";
+            settingsMenuStrip.Size = new Size(549, 24);
+            settingsMenuStrip.TabIndex = 6;
+            settingsMenuStrip.Text = "menuStrip1";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            settingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { logoutToolStripMenuItem });
+            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            settingsToolStripMenuItem.Size = new Size(61, 20);
+            settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            logoutToolStripMenuItem.Size = new Size(112, 22);
+            logoutToolStripMenuItem.Text = "Logout";
+            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
+            // 
+            // viewToolStripMenuItem
+            // 
+            viewToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { viewTodoToolStripMenuItem, viewAllToolStripMenuItem });
+            viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            viewToolStripMenuItem.Size = new Size(44, 20);
+            viewToolStripMenuItem.Text = "View";
+            // 
+            // viewTodoToolStripMenuItem
+            // 
+            viewTodoToolStripMenuItem.Checked = true;
+            viewTodoToolStripMenuItem.CheckState = CheckState.Indeterminate;
+            viewTodoToolStripMenuItem.Name = "viewTodoToolStripMenuItem";
+            viewTodoToolStripMenuItem.Size = new Size(180, 22);
+            viewTodoToolStripMenuItem.Text = "Todo";
+            viewTodoToolStripMenuItem.Click += viewTodoToolStripMenuItem_Click;
+            // 
+            // viewAllToolStripMenuItem
+            // 
+            viewAllToolStripMenuItem.Name = "viewAllToolStripMenuItem";
+            viewAllToolStripMenuItem.Size = new Size(180, 22);
+            viewAllToolStripMenuItem.Text = "All";
+            viewAllToolStripMenuItem.Click += viewAllToolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -131,27 +142,27 @@ namespace Trackit
             ClientSize = new Size(549, 368);
             Controls.Add(btnAddTask);
             Controls.Add(taskListview);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
+            Controls.Add(settingsMenuStrip);
             Name = "MainForm";
             Text = "Task Page";
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            settingsMenuStrip.ResumeLayout(false);
+            settingsMenuStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem logoutToolStripMenuItem;
-        private ToolStripMenuItem settingsToolStripMenuItem;
-        private ToolStripMenuItem tasksToolStripMenuItem;
-        private ToolStripMenuItem historyToolStripMenuItem;
         private ListView taskListview;
         private ColumnHeader colTaskName;
         private ColumnHeader colTaskDescription;
         private Button btnAddTask;
         private ColumnHeader colDateCreated;
         private ColumnHeader colDueDate;
+        private MenuStrip settingsMenuStrip;
+        private ToolStripMenuItem settingsToolStripMenuItem;
+        private ToolStripMenuItem logoutToolStripMenuItem;
+        private ToolStripMenuItem viewToolStripMenuItem;
+        private ToolStripMenuItem viewAllToolStripMenuItem;
+        private ToolStripMenuItem viewTodoToolStripMenuItem;
     }
 }
