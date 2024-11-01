@@ -37,7 +37,6 @@ namespace Trackit
             settingsToolStripMenuItem = new ToolStripMenuItem();
             tasksToolStripMenuItem = new ToolStripMenuItem();
             historyToolStripMenuItem = new ToolStripMenuItem();
-            pomodoroToolStripMenuItem = new ToolStripMenuItem();
             taskListview = new ListView();
             colTaskName = new ColumnHeader();
             colTaskDescription = new ColumnHeader();
@@ -50,7 +49,7 @@ namespace Trackit
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.Menu;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { logoutToolStripMenuItem, settingsToolStripMenuItem, pomodoroToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { logoutToolStripMenuItem, settingsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(549, 24);
@@ -82,12 +81,6 @@ namespace Trackit
             historyToolStripMenuItem.Name = "historyToolStripMenuItem";
             historyToolStripMenuItem.Size = new Size(121, 22);
             historyToolStripMenuItem.Text = "History";
-            // 
-            // pomodoroToolStripMenuItem
-            // 
-            pomodoroToolStripMenuItem.Name = "pomodoroToolStripMenuItem";
-            pomodoroToolStripMenuItem.Size = new Size(76, 20);
-            pomodoroToolStripMenuItem.Text = "Pomodoro";
             // 
             // taskListview
             // 
@@ -160,6 +153,5 @@ namespace Trackit
         private Button btnAddTask;
         private ColumnHeader colDateCreated;
         private ColumnHeader colDueDate;
-        private ToolStripMenuItem pomodoroToolStripMenuItem;
     }
 }

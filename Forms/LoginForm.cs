@@ -76,13 +76,18 @@ namespace Trackit.Forms
                 // Add new user to database 
                 DatabaseManager databaseManager = new DatabaseManager();
             
-                bool isInserted = databaseManager.InsertUser(username, password);
+                User newUser = databaseManager.InsertUser(username, password);
 
                 // Validate SQL database restrictions
-                if (isInserted) 
+                if (newUser != null) 
                 {
+                    // Sets global state for currently logged in user
+                    SessionManager.CurrentUser = newUser;
+
                     txtBoxPassword.Clear();
                     txtBoxUsername.Clear();
+
+                    Debug.WriteLine("Current Active User: " + newUser.UserName);
 
                     // Signup was successful 
                     this.DialogResult = DialogResult.OK;
@@ -94,9 +99,7 @@ namespace Trackit.Forms
                     txtBoxUsername.Clear();
                     txtBoxPassword.Clear();
                 }
-
             }
-
         }
 
         // Validates user input and alerts if field is empty 

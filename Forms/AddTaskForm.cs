@@ -28,20 +28,23 @@ namespace Trackit
             string taskDescription = textBoxTaskDescription.Text;
             DateTime dueDate = dateTimePickerDueDate.Value;
 
-            // Validate user input
+
             if (!ValidInput(taskName, taskDescription))
             {
                 return;
             }
 
             // Capture user input data and create a new task
-            UserTask newTask = new UserTask(
-                TaskName: taskName,
-                TaskDescription: taskDescription,
-                CompletedDate: null,
-                DueDate: dueDate,
-                IsCompleted: false
-            );
+            UserTask newTask = new UserTask
+            {
+                UserID = SessionManager.CurrentUser.UserID,
+                TaskName = taskName,
+                TaskDescription = taskDescription,
+                DueDate = dueDate,
+                IsCompleted = false,
+                DateCreated = DateTime.Now
+            };
+
 
             UserTaskManager.Instance.AddTask(newTask);
 

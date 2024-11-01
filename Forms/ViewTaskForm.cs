@@ -23,14 +23,16 @@ namespace Trackit.Forms
             lblTaskName.Text = selectedTask.TaskName;
             lblTaskDescription.Text = selectedTask.TaskDescription;
             lblDueDate.Text = selectedTask.DueDate?.ToString("MM/dd/yyyy hh:mm tt");
-            lblDateCreated.Text = selectedTask.DateCreated?.ToString("MM/dd/yyyy hh:mm tt");
+            lblDateCreated.Text = selectedTask.DateCreated.ToString("MM/dd/yyyy hh:mm tt");
         }
 
         private void btnComplete_Click(object sender, EventArgs e)
         {
-            
-            UserTaskManager.Instance.RemoveTask(selectedTask);
             selectedTask.IsCompleted = true;
+            selectedTask.DateCompleted = DateTime.Now;
+            
+            // UpdateTask in database and internal TaskList
+            UserTaskManager.Instance.UpdateTask(selectedTask);
 
             // Notify MainForm of succeful removal by setting DialogResult 
             this.DialogResult = DialogResult.OK;

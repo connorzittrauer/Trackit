@@ -1,41 +1,41 @@
-﻿using System.Collections;
-using System.Diagnostics;
+﻿using System;
 
 namespace Trackit.Models
 {
     public class UserTask
     {
-        // Static event to notify subscribers when a task is created
-        private static int taskCounter = 0;
-        public int TaskID { get; private set; }
+        public int TaskID { get; set; }        // Now settable
+        public int UserID { get; set; }        // Associate task with a user
         public string TaskName { get; set; }
         public string TaskDescription { get; set; }
+        public DateTime DateCreated { get; set; }
         public DateTime? DueDate { get; set; }
-        public DateTime? DateCreated { get; private set; }
         public DateTime? DateCompleted { get; set; }
         public bool IsCompleted { get; set; }
 
-
-        public UserTask(string TaskName, string TaskDescription, DateTime? CompletedDate, DateTime? DueDate, bool IsCompleted)
+        // Parameterless constructor
+        public UserTask()
         {
-            this.TaskID = ++taskCounter; // Generate a unique ID for each task
-            this.TaskName = TaskName; 
-            this.TaskDescription = TaskDescription;
-            this.DateCreated = DateTime.Now; // Generate creation date on instantiation
-            this.DateCompleted = CompletedDate; 
-            this.DueDate = DueDate;
-            this.IsCompleted = IsCompleted;
+            DateCreated = DateTime.Now;
+        }
 
-            // Automatically raise event after task creation
+        // Constructor with parameters
+        public UserTask(int userId, string taskName, string taskDescription, DateTime? dueDate)
+        {
+            UserID = userId;
+            TaskName = taskName;
+            TaskDescription = taskDescription;
+            DueDate = dueDate;
+            DateCreated = DateTime.Now;
+            IsCompleted = false;
         }
 
         public override string ToString()
         {
-            // The ?? operator checks if the left-hand side is null. 
-            // If it's null, the right-hand side ("N/A") will be returned instead
             return $"Task ID: {TaskID}, Name: {TaskName}, Description: {TaskDescription}, " +
-                   $"Date Created: {DateCreated?.ToString("g") ?? "N/A"}, Due Date: {DueDate?.ToString("g") ?? "N/A"}, " +
-                   $"Date Completed: {DateCompleted?.ToString("g") ?? "N/A"}, Is Completed: {IsCompleted}";
+                   $"Date Created: {DateCreated:g}, Due Date: {DueDate:g}, " +
+                   $"Date Completed: {DateCompleted:g}, Is Completed: {IsCompleted}";
         }
+
     }
 }

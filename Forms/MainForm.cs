@@ -9,6 +9,10 @@ namespace Trackit
         public MainForm()
         {
             InitializeComponent();
+
+            // Load tasks from the database
+            UserTaskManager.Instance.LoadTasks();
+            UpdateListView();
         }
 
         private void UpdateListView()
@@ -17,17 +21,17 @@ namespace Trackit
             // Clear existing items to avoid dupes
             taskListview.Items.Clear();
 
-            // Add tasks to ListView columns 
-            foreach (var task in UserTaskManager.Instance.TaskList)
+            // Add tasks to ListView columns, exclude completed tasks
+            foreach (var task in UserTaskManager.Instance.TaskList.Where(t=> !t.IsCompleted))
             {
                 ListViewItem item = new ListViewItem(task.TaskName);
 
                 item.SubItems.Add(task.TaskDescription);
-                item.SubItems.Add(task.DateCreated?.ToString("MM/dd/yyyy") ?? "N/A");
-                item.SubItems.Add(task.DueDate?.ToString("MM/dd/yyyy hh:mm tt") ?? "N/A");
+                item.SubItems.Add(task.DateCreated.ToString("MM/dd/yyyy"));
+                item.SubItems.Add(task.DueDate?.ToString("MM/dd/yyyy hh:mm tt"));
 
-                // Embedded metadata tag TaskId to make removal process easier
-                item.Tag = task.TaskID; ;
+                // Store the last object in the Tag property
+                item.Tag = task;
 
                 taskListview.Items.Add(item);
 
@@ -55,26 +59,15 @@ namespace Trackit
                 // Get the first selected item
                 ListViewItem selectedItem = taskListview.SelectedItems[0];
 
-                int taskId = (int)selectedItem.Tag;
-
-
-                /* Uses LINQ and a lambda expression to search and match the internal UserTaskManager TaskList TaskID
-                 * to the currently selected ListView taskId and return the Task Object.
-                 * 
-                 * This enables us to pass easily pass a Task to EditTaskForm(), view its details, and remove it from the list.    
-                 */
-                UserTask selectedTask = UserTaskManager.Instance.TaskList.FirstOrDefault(task => task.TaskID == taskId);
-
-                //Debug.WriteLine(selectedTask.ToString());
-
+                // Retrieve the task from the Tag property in ListView
+                UserTask selectedTask = (UserTask)selectedItem.Tag;
 
                 if (selectedTask != null)
                 {
-                    // Launch EditTaskForm 
+                    // Pass selectedTask to ViewTaskForm
                     ViewTaskForm editTaskForm = new ViewTaskForm(selectedTask);
                     if (editTaskForm.ShowDialog() == DialogResult.OK)
                     {
-                        // Refresh ListView items
                         UpdateListView();
                     }
                 }
@@ -84,10 +77,8 @@ namespace Trackit
         // Logout functionality
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             // Clear current user
             SessionManager.CurrentUser = null;
-
             this.Close();
         }
     }

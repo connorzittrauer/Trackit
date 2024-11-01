@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Trackit.Data_Access;
 
 namespace Trackit.Models
 {
@@ -34,18 +35,45 @@ namespace Trackit.Models
             TaskList = new List<UserTask>();
         }
 
+        // Load task from the database for the current user
+        public void LoadTasks()
+        {
+            // If the current user has tasks, load them in
+            if (SessionManager.CurrentUser != null)
+            {
+                DatabaseManager databaseManager = new DatabaseManager();
+                TaskList = databaseManager.GetTasksByUserID(SessionManager.CurrentUser.UserID);
+            }
+            else
+            {
+                TaskList.Clear();
+            }
+        }
+
       
         public void AddTask(UserTask task)
         {
-            TaskList.Add(task);
-            Debug.WriteLine("TASK ADDED: " + task.TaskID + " " + task.TaskName);
+            DatabaseManager databaseManager = new DatabaseManager();
+            bool isAdded = new DatabaseManager().AddTask(task);
+
+            if (isAdded)
+            {
+                TaskList.Add(task);
+                Debug.WriteLine("TASK ADDED: " + task.TaskID + " " + task.TaskName);
+            }
         }
 
-        public void RemoveTask(UserTask task)
+        public void UpdateTask(UserTask task)
         {
-            TaskList.Remove(task);
-            Debug.WriteLine("TASK REMOVED: " + task.TaskID + " " + task.TaskName);
+            DatabaseManager databaseManager = new DatabaseManager();
+            bool isUpdated = databaseManager.UpdateTask(task);
+
+            if (isUpdated)
+            {
+                LoadTasks();
+            }
         }
+
 
         // Helper debug method for printing task list
         public void PrintTasks()
