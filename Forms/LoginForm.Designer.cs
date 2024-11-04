@@ -127,7 +127,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "LoginForm";
-            Text = "LoginForm";
+            Text = "Portal";
             ResumeLayout(false);
             PerformLayout();
         }

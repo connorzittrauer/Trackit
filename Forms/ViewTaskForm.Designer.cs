@@ -152,7 +152,7 @@
             Controls.Add(pnlBackground);
             Controls.Add(btnComplete);
             Name = "ViewTaskForm";
-            Text = "Edit Task";
+            Text = "Task Details";
             pnlBackground.ResumeLayout(false);
             pnlBackground.PerformLayout();
             ResumeLayout(false);

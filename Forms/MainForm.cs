@@ -11,8 +11,6 @@ namespace Trackit
         {
             InitializeComponent();
 
-
-
             // Load tasks from the database
             UserTaskManager.Instance.LoadTasks();
             UpdateListView();

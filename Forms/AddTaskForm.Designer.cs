@@ -111,7 +111,7 @@ namespace Trackit
             Controls.Add(lblTaskName);
             Controls.Add(textBoxTaskName);
             Name = "AddTaskDialogForm";
-            Text = "TaskDialog";
+            Text = "Add Task";
             ResumeLayout(false);
             PerformLayout();
         }
