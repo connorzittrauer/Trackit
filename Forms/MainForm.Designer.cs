@@ -86,7 +86,7 @@ namespace Trackit
             // 
             // btnAddTask
             // 
-            btnAddTask.Location = new Point(265, 321);
+            btnAddTask.Location = new Point(263, 316);
             btnAddTask.Name = "btnAddTask";
             btnAddTask.Size = new Size(75, 23);
             btnAddTask.TabIndex = 5;
@@ -99,7 +99,7 @@ namespace Trackit
             settingsMenuStrip.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, viewToolStripMenuItem });
             settingsMenuStrip.Location = new Point(0, 0);
             settingsMenuStrip.Name = "settingsMenuStrip";
-            settingsMenuStrip.Size = new Size(652, 24);
+            settingsMenuStrip.Size = new Size(630, 24);
             settingsMenuStrip.TabIndex = 6;
             settingsMenuStrip.Text = "menuStrip1";
             // 
@@ -145,7 +145,7 @@ namespace Trackit
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
-            ClientSize = new Size(652, 368);
+            ClientSize = new Size(630, 354);
             Controls.Add(btnAddTask);
             Controls.Add(taskListview);
             Controls.Add(settingsMenuStrip);

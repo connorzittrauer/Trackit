@@ -80,6 +80,7 @@
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.Size = new Size(186, 23);
             txtBoxPassword.TabIndex = 5;
+            txtBoxPassword.UseSystemPasswordChar = true;
             // 
             // lblPassword
             // 
