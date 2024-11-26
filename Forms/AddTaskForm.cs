@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Trackit.Models;
+﻿using Trackit.Models;
 
 namespace Trackit
 {
+    /// <summary>
+    /// Form for adding new tasks to the user's task list.
+    /// 
+    /// This form allows the user to input details for a new task:
+    /// - Task name
+    /// - Task description
+    /// - Due date
+    ///
+    /// The form uses a modal dialog workflow, returning <see cref="DialogResult.OK"/> upon successful completion.
+    /// 
+    /// </summary>
+
     public partial class AddTaskForm : Form
     {
         public AddTaskForm()
         {
             InitializeComponent();
-           
-            // Set the custom format to display date and time 
+
+            // Initializes the DateTimePicker
             dateTimePickerDueDate.CustomFormat = "MM/dd/yyyy hh:mm tt";
         }
 
@@ -56,13 +58,11 @@ namespace Trackit
              * specifying that the dialog box was sucessfully completed.
              * 
              */
-            
-            this.DialogResult = DialogResult.OK;  //Dialog result automatically closes a MODAL form in Windows Forms
-            this.Close();  // This will trigger MainForm to load tasks!
+
+            this.DialogResult = DialogResult.OK;  // Dialog result automatically closes a MODAL form in Windows Forms
+            this.Close();                         // This will trigger MainForm to load tasks!
         }
 
-
-        // Helper method to clear form fields
         private void ClearFormFields()
         {
             textBoxTaskName.Clear();
@@ -84,7 +84,7 @@ namespace Trackit
                 MessageBox.Show("Task description cannot be empty.");
                 return false;
             }
-           return true;
+            return true;
         }
 
     }

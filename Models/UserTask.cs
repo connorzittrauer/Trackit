@@ -1,11 +1,19 @@
-﻿using System;
-
-namespace Trackit.Models
+﻿namespace Trackit.Models
 {
+    /// <summary>
+    /// Model class that represent sa Task associated with a specific user in the application.
+    /// Maps to the Task table in the database. 
+    /// 
+    /// This class provides constructors for both parameterless instantiation and  task creation. 
+    /// It also includes an override for the ToString method to provide a readable representation of the task.
+    /// </summary>
+    /// 
+
     public class UserTask
     {
-        public int TaskID { get; set; }        // Now settable
-        public int UserID { get; set; }        // Associate task with a user
+
+        public int TaskID { get; set; }
+        public int UserID { get; set; }
         public string TaskName { get; set; }
         public string TaskDescription { get; set; }
         public DateTime DateCreated { get; set; }
@@ -13,13 +21,11 @@ namespace Trackit.Models
         public DateTime? DateCompleted { get; set; }
         public bool IsCompleted { get; set; }
 
-        // Parameterless constructor
         public UserTask()
         {
             DateCreated = DateTime.Now;
         }
 
-        // Constructor with parameters
         public UserTask(int userId, string taskName, string taskDescription, DateTime? dueDate)
         {
             UserID = userId;

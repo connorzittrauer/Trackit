@@ -1,19 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Trackit.Data_Access;
 
 namespace Trackit.Models
 {
+    /// <summary>
+    /// UserTaskManager is a singleton class responsible for managing tasks 
+    /// associated with the currently logged-in user.
+    /// 
+    /// It provides a single globally instance that maintains an 
+    /// in-memory list of tasks and synchronizes task data with the SQL database.
+    /// 
+    /// </summary>
+
     public class UserTaskManager
     {
-        // Static field to hold the single instance of UserTaskManager
+
         private static UserTaskManager _instance;
 
-        // Public property to provide global access to the instance
         public static UserTaskManager Instance
         {
             get
@@ -26,10 +29,8 @@ namespace Trackit.Models
             }
         }
 
-        // List to hold tasks
         public List<UserTask> TaskList { get; private set; }
 
-        // Private constructor prevents instantiation from outside the class
         private UserTaskManager()
         {
             TaskList = new List<UserTask>();
@@ -49,8 +50,6 @@ namespace Trackit.Models
                 TaskList.Clear();
             }
         }
-
-      
         public void AddTask(UserTask task)
         {
             DatabaseManager databaseManager = new DatabaseManager();

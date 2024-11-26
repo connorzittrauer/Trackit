@@ -1,17 +1,27 @@
-﻿using System.Diagnostics;
+﻿using Trackit.Forms;
 using Trackit.Models;
-using Trackit.Forms;
 
 namespace Trackit
 {
+    /// <summary>
+    /// The main interface of the Trackit application, responsible for displaying and managing tasks.
+    /// 
+    /// Serves as main portal for task management:
+    /// - Viewing tasks (with options to filter between "To-Do" and "All" tasks)
+    /// - Adding new tasks 
+    /// - Viewing and tasks through a double-click.
+    /// - Logging out, which clears the current user session.
+    /// 
+    /// The form dynamically updates the task list based on changes to the task data. 
+    /// </summary>
+
     public partial class MainForm : Form
     {
-        private bool showAllTasks = false; // Default to showing "To Do" tasks 
+        // Default to only showing "Todo" tasks 
+        private bool showAllTasks = false;
         public MainForm()
         {
             InitializeComponent();
-
-            // Load tasks from the database
             UserTaskManager.Instance.LoadTasks();
             UpdateListView();
         }
@@ -19,7 +29,6 @@ namespace Trackit
         private void UpdateListView()
         {
 
-            // Clear existing items to avoid dupes
             taskListview.Items.Clear();
 
             // Determine which tasks to display based on flag
@@ -36,7 +45,7 @@ namespace Trackit
                 tasksToDisplay = UserTaskManager.Instance.TaskList.Where(t => !t.IsCompleted);
             }
 
-            // Add tasks to ListView columns
+            // This populates the TaskList component with the Current user's tasks.
             foreach (var task in tasksToDisplay)
             {
                 ListViewItem item = new ListViewItem(task.TaskName);
@@ -48,13 +57,10 @@ namespace Trackit
 
                 if (task.IsCompleted)
                 {
-                    //item.BackColor = Color.LightGray;
                     item.ForeColor = Color.DarkGray;
                 }
 
-                // Store the last object in the Tag property
                 item.Tag = task;
-
                 taskListview.Items.Add(item);
 
             }
@@ -68,11 +74,9 @@ namespace Trackit
             UpdateListView();
         }
 
-        // Event triggered when a ListView item is clicked
         private void taskListview_ItemActivate(object sender, EventArgs e)
         {
 
-            // Check if there is at least one selected item
             if (taskListview.SelectedItems.Count > 0)
             {
                 // Get the first selected item
@@ -93,9 +97,10 @@ namespace Trackit
 
             }
         }
+
+        // Logs out CurrentUser
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Clear current user
             SessionManager.CurrentUser = null;
             this.Close();
         }

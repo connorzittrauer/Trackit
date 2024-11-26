@@ -1,15 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Diagnostics;
 using Trackit.Models;
 
 namespace Trackit.Data_Access
 {
+    /// <summary>
+    /// Handles all database interactions for the Trackit application.
+    /// </summary>
+    /// <remarks>
+    /// This class provides methods for:
+    /// - Connecting to the SQL database using a connection string.
+    /// - Managing user data, including adding new users and retrieving user details.
+    /// - Managing task data, including adding, updating, and retrieving tasks.
+    ///
+    /// The database connection string is retrieved from the application's configuration file.
+    /// This class uses <see cref="SqlConnection"/>, <see cref="SqlCommand"/>, and other ADO.NET components for database communication.
+    /// </remarks>
 
     public class DatabaseManager
     {
@@ -111,7 +118,7 @@ namespace Trackit.Data_Access
 
                         // Log to console
                         Debug.WriteLine($"{1} row(s) inserted with Task Name: {task.TaskName} and TaskID:{task.TaskID}");
-                        
+
                         return true;
                     }
                     catch (Exception ex)
@@ -213,10 +220,10 @@ namespace Trackit.Data_Access
         public User GetUserByUsername(string username)
         {
             string connectionString = GetConnectionString();
-            using (SqlConnection connection = new SqlConnection(connectionString)) 
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string sql = "SELECT UserID, Username, Password FROM AppUser WHERE Username = @Username";
-                using (SqlCommand cmd = new SqlCommand(sql, connection)) 
+                using (SqlCommand cmd = new SqlCommand(sql, connection))
                 {
                     cmd.Parameters.AddWithValue("@Username", username);
 

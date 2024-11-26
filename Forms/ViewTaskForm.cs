@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Trackit.Models;
+﻿using Trackit.Models;
 
 namespace Trackit.Forms
 {
+    /// <summary>
+    /// Form for viewing and managing details of a selected task.
+    /// 
+    /// This form displays task details:
+    /// - Task Name 
+    /// - Task Description
+    /// - Due Date
+    /// - Date Created
+    /// 
+    /// </summary>
+
     public partial class ViewTaskForm : Form
     {
         private UserTask selectedTask;
@@ -30,7 +32,7 @@ namespace Trackit.Forms
         {
             selectedTask.IsCompleted = true;
             selectedTask.DateCompleted = DateTime.Now;
-            
+
             // UpdateTask in database and internal TaskList
             UserTaskManager.Instance.UpdateTask(selectedTask);
 
