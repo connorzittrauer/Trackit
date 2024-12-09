@@ -2,7 +2,8 @@
 
 Trackit is the final project for the Rapid Application Development (RAD) course at Louisiana State University in Shreveport. Trackit is a simple task management application built with C# and Windows Forms (WinForms). It allows users to register, log in, and manage tasks. Users can add new tasks, mark tasks as completed, and view all their tasks in a clean and organized UI.
 
-**![image](https://github.com/user-attachments/assets/c83b10a9-a8af-4d4e-ad61-82480d067628)**
+![image](https://github.com/user-attachments/assets/aaaf94d4-1df4-4b06-8352-a1b228dad64a)
+
 
 ## Features
 
